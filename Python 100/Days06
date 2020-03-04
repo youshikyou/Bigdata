@@ -1,0 +1,15 @@
+"Max factorial
+def max_fac(*args):
+	min=float('inf')
+	for arg in args:
+		if min >=arg:
+			min=arg
+	max_fac=1
+	for i in range(1,min+1):
+		is_fact=True
+		for x in args:
+			if x%i!=0:
+				is_fact=False
+		if is_fact :
+			max_fact=i
+	return max_fact
