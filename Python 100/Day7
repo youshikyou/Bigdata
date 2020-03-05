@@ -1,0 +1,28 @@
+#create a verification code
+import random
+import string
+
+def generate_verificationcode(num):
+	figure_num=random.randrange(1,num)
+	letter_num=num-figure_num
+	verification_code=[]
+	for _ in range(figure_num):
+		verification_code.append(random.randrange(1,10))
+	lower_alphabet = string.ascii_lowercase
+	upper_alphabet = string.ascii_uppercase
+	letter_combination=lower_alphabet+upper_alphabet
+	for _ in range(letter_num):
+		verification_code.append(random.choice(letter_combination))
+	random.shuffle(verification_code)
+	codestr=''.join([str(elem) for elem in verification_code]) 
+	return codestr
+	
+
+
+def main():
+	num=int(input('please write the length of verification code:'))
+	
+	print(generate_verificationcode(num))
+	
+if __name__=='__main__':
+	main()
