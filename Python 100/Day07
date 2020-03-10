@@ -26,3 +26,106 @@ def main():
 	
 if __name__=='__main__':
 	main()
+	
+	
+	
+	
+#########################
+#return suffix
+def find_suffix(str):
+	start_suffix=str.rfind('.')
+	suffix=str[start_suffix+1:]
+	return suffix
+	
+#########################
+#return max 2
+def max_2(list):
+	listtofind=list
+	max_value=max(listtofind)
+	listtofind.remove(max_value)
+	sub_max_value=max(listtofind)
+	return max_value,sub_max_value
+	
+######################	
+#return days
+def is_leap_year(year):
+	return year%4==0 and year%100 !=0 or year%400==0
+	
+def which_day(year, month,day):
+	days_in_month=[31,29,31,30,31,30,31,30,30,31,30,31]
+	days_in_month_leap=[31,28,31,30,31,30,31,30,30,31,30,31] # a method to create list with function choose :days_of_month = [[31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31],[31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]][is_leap_year(year)]
+	sum=0
+	if is_leap_year(year):
+		for single_mon in range(month-1):
+			sum+=days_in_month_leap[single_mon]
+		return sum+day
+
+	else:
+		for single_mon in range(month-1):
+			sum+=days_in_month[single_mon]
+		return sum+day
+
+###################
+def print_yanghui(num):
+	yh=[[]]*num
+	for row in range(num):
+		yh[row] = [None] * (row + 1)
+		for col in range(len(yh[row])):
+			if col == 0 or col == row:
+				yh[row][col] = 1
+			else:
+				yh[row][col] = yh[row - 1][col] + yh[row - 1][col - 1]
+			print(yh[row][col], end='\t')
+		print()
+#######################
+import random
+#select balls
+def selected_balls():
+	redball= [x for x in range(1,34)]
+	selected_balllist=[]
+	selected_balllist=random.sample(redball,6)
+	selected_balllist.append(random.randint(1,16))  # randomint is include both start number and end number
+	return selected_balllist
+#display selected ball lists
+def display_balllists(selected_balllist):
+	for i in range(len(selected_balllist)):
+		print(selected_balllist[i],'|',end=' ') if i!=len(selected_balllist)-1 else  print('blue ball: ',selected_balllist[i])
+
+####################		
+#cycircle solution
+def solution():
+	person=[True]*30
+	counter,number,index=0,0,0
+	while counter<15:
+		if person[index]:
+			number+=1
+			if number==9:
+				person[index]=False
+				counter+=1
+				number=0
+		index+=1
+		index%=30
+
+		
+#
+		
+		
+		
+
+if __name__=='__main__':
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		
