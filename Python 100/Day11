@@ -1,0 +1,24 @@
+def is_prime_num(num):
+	for factor in range(2,num):
+		if num%factor==0:
+			return False
+	return True if num!=1 else False
+
+	
+def main():
+	for num in range(1,10001):
+		if is_prime_num(num) and num>=1 and num<100:
+
+			with open('C:/Python/project/a.txt','a+') as f_a:
+				f_a.write(str(num)+' ')
+		elif is_prime_num(num) and num>=100 and num<1000:
+
+			with open('C:/Python/project/b.txt','a+') as f_b:
+				f_b.write(str(num)+' ')
+		elif is_prime_num(num) and num>=1000 and num<10000:
+
+			with open('C:/Python/project/c.txt','a+') as f_c:
+				f_c.write(str(num)+' ')
+
+if  __name__=='__main__':
+	main()
