@@ -1,0 +1,11 @@
+def select_sort(list,comp=lambda x,y:x<y):
+	list_copy=list[:]
+	for i in range(len(list)-1):
+		min_index=i
+		for j in range(i+1,len(list)):
+			if comp(list_copy[j],list_copy[min_index]):
+				min_index=j
+		temp=list_copy[i]
+		list_copy[i]=list_copy[min_index]
+		list_copy[min_index]=temp   # list_copy[i], list_copy[min_index]=list_copy[min_index],list_copy[i]
+	return list_copy
