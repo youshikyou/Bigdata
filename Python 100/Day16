@@ -46,7 +46,7 @@ def quick_sort(list,left,right):
         while i<j:
             while list[j]>=pivot and i<j:
                 j-=1
-            while list[i]<pivot and i<j:
+            while list[i]<=pivot and i<j:
                 i+=1
             list[i],list[j]=list[j],list[i]
         list[left]=list[i]
