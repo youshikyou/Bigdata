@@ -1,0 +1,311 @@
+ctrl+shift+= enlarge the terminal size
+ctl+- small the terminal size
+touch + xxx, create a file if not exist
+#隐藏文件是以.为开头
+在terminal中,.代表当前目录 ..代表上级目录
+
+ls -l -h		#人性化显示文件列表和大小
+cd - 			#可以在最近两次工作目录之间来回切换
+mkdir -p a/b/c/d 	#连续创建目录
+rm -r			#递归删除目录下的文件
+rm -f 			#强制删除，即使不存在也不会有提示
+tree （-d） 		#显示树状图（只文件目录）
+cp -i			#覆盖文件前提示
+cp -r 			#copy the document
+
+mv: move and rename the file
+
+=================================================================
+阅读
+cat: read the file content,merge file,append file content
+cat -b to show the line number except the empty lines
+cat -n show all the line number
+more: show the content in seperate screen
+
+
+===================================================================
+搜索
+grep: to find the content in the file
+grep -n show the finding context with line number
+grep -i ignore the captablist
+grep -v show the content without the required content
+you can combine the two commands like grep -vn
+^a 以行首搜索
+a$ 以行尾搜索
+
+=====================================================================
+重定向
+echo 配合重定向
+> 表示输出， 会覆盖文件原有的内容
+>>表示追加，会将内容追加到已有文件的末尾
+
+=====================================================================
+管道 |
+将一个命令的输出作为另一个命令的输入
+
+=======================================================================
+关机
+shutdown 选项 时间
+shutdown -r 重启 没有说明时间在一分钟后执行
+shutdown -c 取消
+shutdown now现在关机
+
+===================================================================
+网卡
+负责网络通讯的硬件设备
+IP地址是设置在网卡上的地址信息
+
+ifconfig: configure a network interface
+ping ip or 域名： check the target ip address connection work or not
+域名是IP地址的别名
+
+ifconfig | grep inet 组合命令查看ip地址
+127.0.0.1 本地环回地址
+ping 127.0.0.1 check the local network function
+ping www.google.com 也可以检测网络连接
+
+
+IP is to find the web compute engine
+port is to find the app in the compute engine
+SSH server default port is 22, if it is default, it can be omitted. SSH,Web,Https are all app or called software
+
+SSH Port no 22
+Web Port no 80
+
+Structure is   ip:port 
+
+SSH 客户端使用
+ssh [-p port] user@remote
+user 是远程机器上的用户名，如果不指定的话默认为当前用户
+remote 是远程机器的地址，可以时ip 或者域名，或者是别名
+port 是ssh server监听的端口，如果不指定，默认值是22
+使用 exit推出当前用户登陆
+
+
+scp
+secure copy 是在linux下用来进行远程复制文件的命令
+地址格式与ssh基本相同，注意，指定端口用的是大写的-P而不是小写的
+scp -P port 0.1.py user@remote:Desktop/01.py 把本地文件复制到远程服务器
+scp -P port user@remote:Desktop/01.py 01.py 把远程服务器文件复制到本地
+
+加上-r选项可以传送文件夹
+把当前目录下的demo文件夹复制到远程 home 目录下的Desktop
+scp -r demo user@remote:Desktop
+
+把远程home目录下的Desktop复制到当前目录下的demo文件夹
+scp -r user@remote:Desktop demo
+
+#chmod 修改用户/组 对文件/目录的权限 比较常见为 chmod -R 755 file|doc
+chmod +/- rwx file|doc
+r read
+w write
+x excute
+#如果一个目录没有可执行权限，那么这个目录不能访问
+
+#sudo: substitute user do
+
+组管理 终端命令 要在sudo下
+groupadd 添加组
+groupdel 删除组
+cat/etc/group 确认组信息
+chgrp -R 组名 文件/目录名   递归修改文件/目录的所属组
+
+创建用户/设置密码/删除用户
+
+useradd -m -g group username    -m 自动建立用户home目录 -g 指定用户在所在组，否则会建立一个和同名的组
+passwd username                  如果是普通用户，直接用passwd可以修改自己的账户密码
+userdel -r username               -r选项自动删除用户home的目录
+cat /etc/group | grep username
+
+
+usermod 	可以用来设置用户的主组/附加组和登陆Shell，命令格式如下：
+主组：在新建用户指定，在etc/passwd的第四列 GID对应的组
+附加组：在etc/group中最后一列表示该组的用户列表，用于指定用户的附加权限
+设置了用户的附加组后，需要重新登陆才能生效
+
+usermod -g group username 修改用户的主组
+usermod -G group username 修改用户的附加组
+usermod -s /bin/bash 修改用户登陆的shell
+注意 默认使用useradd添加的用户是没有权限使用sudo以root身份执行命令的，可以使用以下命令将用户添加到sudo附加组中
+usermod -G sudo username
+
+改变用户的shell
+usermod -s /bin/bash username
+
+which 
+用来查看执行命令所在位置
+which ls
+#输出 /bin/ls
+
+which useradd
+#输出 /usr/sbin/useradd
+
+
+/bin 二进制执行文件目录，主要用于具体应用
+/sbin （system binary）是系统管理员专用的二进制代码存放目录，主要用于系统管理
+/usr/bin  后期安装的一些软件
+/usr/sbin 超级用户的一些管理程序
+
+切换用户
+su -username 切换到用户home目录
+exit 退出当前登陆帐号
+
+#切换到root账户，注意如果第一次切换，需要先设置root的密码，否则会认证失败
+su - 
+
+修改文件权限
+#修改文件|目录名
+chown username file|doc
+
+#递归修改文件|目录的组
+chgrp -r groupname file|doc
+
+#递归修改文件权限
+chmod -R 755 file|doc  #7/5/5分别代表owner/group/others的权限,7代表rwx全有，以此类推
+
+#r=4
+#w=2
+#x=1
+
+==========================================
+系统基本命令
+date 查看系统时间
+cal (-y) 查看日历，（一年）
+df -h 		#disk free显示磁盘剩余空间
+du -h[目录名] 	#disk usage 显示目录下的文件大小
+
+=======================================
+进程概念
+正在执行的一个程序
+
+ps aux 			#process status查看进程的详细状况
+top			#动态先是运行中的进程并且排序,输入q 来退出
+kill [-9] 进程代号	#终止指定代号的进程，-9表示强行终止
+
+#ps 默认只会显示当前用户通过终端启动的应用程序
+
+a 			#显示终端上的所有进程，包括其他用户的进程
+u			#显示进程的详细状态
+x			#显示没有控制终端的进程
+
+#使用kill命令时，最好只终止由当前用户开启的进程，而不要终止root身份开启的进程，否则可能导致系统崩溃
+
+jobs #查看后台运行或停止的进程
+fg   #将后台命令置于前台
+bg   #让命令在后台运行
+命令 & #把命令放在后台运行
+ctl+z #把前台命令停下来放到后台
+
+
+=======================================
+其他命令
+
+#查找文件
+find 通常用来在特定目录下搜索符合条件的文件
+find [路径] -name "*.py"  #查找指定路径下扩展名为.py的文件，包括子目录
+#如果省略路径，表示在当前文件夹下查找
+#之前学习的通配符，在使用find命令同时可用
+
+#软链接
+ln -s sourcefile linkfile 	#建立文件的软链接，类似于windows的快捷方式
+
+#注意 没有-s选项建立的是一个硬链接文件， 两个文件占用相同大小的硬盘空间，工作中几乎不会建立文件硬链接
+#源文件要使用绝对路径，不能使用相对路径，这样可以方便移动链接文件后，仍然能够正常使用
+
+#硬链接 ln 不加-s
+
+
+=========================================
+文件软硬链接区别苦
+在linux，文件名和文件数据是分开储存的
+
++++++软链接示意+++++++++++++++++
+文件数据<——文件名<---软链接文件数据<——软链接文件名
+
+++++++++硬链接示意+++++++++++++++
+硬链接——>文件数据<——文件名
+
+
+=============================
+打包解包
+Linux 常用tar.gz
+tar 是linux中最常用的备份工具，把一系列文件打包到一个大文件中，也可以把一个打包的大文件恢复成一系列文件
+
+#打包文件,打包多个文件空格分隔文件即可,注意不负责压缩
+tar -cvf packed.tar sourcefile
+
+#解包文件
+tar -xvf compressedname.tar
+
+c #生成档案文件，创建打包文件
+x #解开档案文件
+v #列出归档解档的详细进程，显示进度
+f #指定档案文件名称，f后面一定是.tar文件，所以必须放选项最后
+
+===========================================
+压缩和解压缩
+
+1) gzip
+#tar与gzip命令结合可以使用实现文件打包和压缩
+#tar只负责打包文件，但不负责压缩文件
+#用gzip压缩tar打包后的文件，其扩展名一般为xxx.tar.gz
+#tar 命令中有个选项-z 可以调用gzip，实现压缩和解压缩功能
+
+#压缩文件
+tar -zcvf compressedfile.tar.gz sourcefile/path ...
+#解压缩文件
+tar -zxvf compressedfile.tar.gz
+#解压缩到指定路径，指定的目录必须要提前存在
+tar -zxvf compressedfile.tar.gz -C(#大写c) targetedpath
+
+2)bzip2
+#tar bzip2 命令结合可以使用实现文件打包和压缩
+#用bzip2压缩tar打包后的文件，其扩展名一般为xxx.tar.bz2
+#在tar命令中有一个-j可以调用bzip2 实现压缩和解压缩
+
+#压缩文件
+tar -jcvf compressed.tar.bz2 sourcefile/path...
+#解压缩文件
+tar -jxvf compressed.tar.bz2 -c targetedpath
+=========================================================================
+软件安装
+apt 是advanced packaging tool，linux下的一款安装包管理工具
+
+#1.安装软件
+sudo apt install software
+#2.卸载软件
+sudo apt remove software
+#3.更新已安装包
+sudo apt upgrade
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
