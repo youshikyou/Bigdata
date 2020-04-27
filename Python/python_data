@@ -1,0 +1,405 @@
+==================
+VIM用法
+  读取 $ vim 文件名
+  删除
+  删除一行 dd
+  删除n行 n dd
+  取消 u
+  编辑 i
+
+  保存  ESC退出进入末行
+  $ ZZ #大写Z 保存并退出
+  或者
+  $ :wq
+
+  命令模式 #按键代表命令
+      1.i #插入模式 a #追加模式
+      2.: #进入末行模式
+      3.G #移动光标到末位  500G #光标到500行  gg #到行首
+      4.GHJK 分别代表 左 下 上 右光标移动
+      5.ctrl + e /ctrl + Y 移动一行
+        ctrl + f/ctrl + b 翻页 f向前翻，b向后翻
+        0  光标到行首  $ 光标到末尾  w 光标到下个单词
+      6.dd 删除一行 100dd删除一百行
+        yy复制一行，10yy 从光标所在行复制10行 p粘贴 10p就是 粘贴10次
+        u 撤销 ctrl +r 恢复
+
+      7. / 搜索
+  编辑模式 #键入内容     ESC退出到命令模式
+
+  末行模式 #搜索/配置/执行系统命令  Enter返回命令模式
+      1.  显示文件内容行号 $:set nu 不显示行号 $:set nonu
+      2.  修改缩进大小 $ :set ts=4
+      3.  高亮语法/关闭高亮语法 $ :syntax on/off
+      4.  显示光标所在位置   $ :set ruler/noruler
+
+vim 配置文件
+#建立一个配置文件是隐藏文件  $ touch .vimrc
+$ set nu
+$ syntax on
+$ set ts=4
+$ set expandtab
+$ set autoindent
+$ set ruler
+$ set nohls #no highlights
+
+=========================================================
+Redis  key value database high speed write and read
+
+MongoDB file database
+mariadb 是mysql的开源版本
+
+systemctl start mariadb
+systemctl stop mariadb
+
+In mariadb update user password
+$ update user set password=password('xxxx') where user='your username';
+$ flush privileges
+
+Check the user password
+$ select user,password,host from user;
+
+========================================================
+Git
+git init  #文件夹初始化为Git仓库
+git log #查看提交日志
+git add #将工作区的指定文件放入暂存区
+git commit -m 'comment' #将暂存区的内容添加到仓库
+git checkout  -- <file> #将暂存区的文件恢复到工作区
+git reset --hard Head^  #回到上一个版本
+git reset --hard <ID>   #回到指定版本
+git reflog #当git reset恢复到版本1, 但是想恢复到版本3, 这时候git log是看不到任何版本的
+git push  将本地代码推到服务器
+git pull
+
+
+================================================================
+
+SQL
+  DDL 数据定义语言  create/drop/alter
+  DML 数据操作语言  insert/delete/update/select
+  DCL 数据控制语言  grant/revoke
+
+$ create database databasename default charset utf8; #建立数据库并且这是字符集
+
+$ drop database databasename if exists databasename; #删除数据库
+
+$ show tables;
+
+$ show databases
+
+$ create table tablename (
+ stuid int not null comment 'student number', # comment 添加注释
+ stuname varchar(20) not null, #不允许该列输入空值 且输入最大为20， 如果是char，则是定长字符串
+ stusex bit default 1,  #设置默认值
+ stubirth date,
+ primary key (stuid)  #设置主键
+);
+
+
+$ drop table databasename if exists databasename; #删除
+
+
+修改表 针对的是对表的操作
+$ ALTER TABLE tablename ADD COLUMN fieldname1 datatype AFTER fieldname2 # after是可以调整列的位置
+
+$ ALTER TABLE tablename DROP COLUMN columname;  #删除列
+
+$ ALTER TABLE tablename CHANGE COLUMN oldfieldname newfieldname  #修改列名
+
+$ ALTER TABLE tablename ALTER fieldname SET DEFAULT newdefaultvalue #重新设定默认值
+
+$ ALTER TABLE tablename MODIFY COLUMN fielname INT auto_increment
+
+添加外键约束
+
+$ ALTER TABLE tablename ADD CONSTRAINT keyname
+  FOREIGN KEY (fieldname) REFERENCES foreigntablename (fieldname)
+  ON DELETE restrict/cascade/set null on update restrict/cascade/set null
+
+  #same fieldname for both of the table, on delete后面是选写，这里主要用于删除某一列
+  时的操作，restrict 禁止删除，cascade级联，也就是说可以删除后其他的列相应改变，
+  比如删掉第10列，第11列自动变成第10列，set null是把删除的列后，其内容置0
+
+删除外键约束
+$ ALTER TABLE tablename DROP foreign key keyname
+
+添加唯一性约束
+$ ALTER TABLE tablename ADD CONSTRAINT keyname UNIQUE (fieldname1,fieldname2);
+
+
+注意，对一个表中的fieldname来添加外键约束和唯一性约束，就可以使，两张表中产生一对一的外键约束 参照千峰python 248,一对一外键关联
+
+
+插入数据
+$ INSERT INTO tablename (columname1，columname2) values(xxx,xxx,....);  #只要columname 与值一一对应，顺序无所谓
+
+$ INSERT INTO tablename (cl1,cl2,cl3) values
+(xxx,xxx,xxx),
+(xxx,xxx,DEFAULT),
+(XXX,XXX，xxx);
+
+删除数据
+$ DELETE FROM tablename WHERE condition
+
+
+更新数据
+$ UPDATE tablename SET fieldname=data WHERE condition
+
+
+查询操作
+筛选
+
+SELECT case fieldname WHEN value THEN newvalue1 ELSE newvalue2 FROM table;
+BETWEEN AND
+like 'sdf_' #精确匹配一个字符
+like 'sdfsd%' #模糊匹配
+
+用exist 代替in 效率高
+
+
+判断空值
+is null
+is not null
+
+去重
+distinct
+
+抽取年
+year(now())
+
+顺序
+ORDER BY DESC/ASC
+
+聚合函数
+max
+min
+count
+sum
+avg
+都不考虑null
+
+如果group之后进行条件筛选，应该用having
+分组以前筛选用where，
+分组以后的帅选使用having
+
+
+Limit
+Limit 5 offset 5 #查看6~100行
+
+建立索引可以增加搜索速度，但是增删改会变慢。
+CREATE INDEX indexname ON tablename (fieldname)
+DROP INDEX indexname ON tablename
+
+视图： 查询的快照（简化查询操作），将用户的访问权限限制到某些指定的列上
+CREATE VIEW viewname AS (select ****);
+SELECT * FROM viewname #这相当于建立想要查询内容的快照，直接从快照里面查询
+DROP VIEW viewname
+
+创建存储过程,调用过程
+1.先把定界符重定义  delimiter $$ # 重新定义成$$
+2.CREATE PROCEDURE procedure_name(in arg1 arg_datatype,out arg2 datatype) begin
+SELECT XXX INTO arg2 FROM tablename where arg1=arg1; end$$
+3.CALL procedure_name(arg1,arg2);
+4.SELECT arg2;
+
+DCL：授予权限（grant to）和召回权限（revoke from）
+CREATE USER sss@xxx IDENFIFIED BY ‘password’
+DROP USER sss@xxxx;
+
+GRANT ALL PRIVILEGES ON database.* to sss@xxx;
+REVOKE insert,delete,update on database FROM sss@xxxx;
+
+事务 transaction - 把多个增删改的操作变成不可分割的atomic operation
+要不全部做，要不全都不做
+
+-- start transaction;
+begin;
+DELETE xxx
+INSERT XXX
+COMMIT; #提交，事务中的所有操作全部生效
+
+直到commit执行，上面的增删更新的步骤才生效
+如果是
+ROLLBACK；  #事务中的所有操作全部撤消
+那就是回滚到begin之前的状态，begin开始的增删更新无效。
+
+
+
+SQL注意事项
+1.给数据库和表命名时候尽量使用全小写
+2.筛选条件的字符串是否区分大小写看设置的校对规则
+3.数据库中的对象通常会用前缀加以区分
+4.执行计划， 可以利用 explain 来看sql语句执行的步骤，来改善性能
+
+
+
+=========================================================================
+Redis REmote DItionary Server
+Redis 是键值对数据库，将数据放在内存中，读写性能出色，以键值对方式存储。 redis实战书籍不错
+单线程 + 异步 I/O （多路I/O复用）
+
+Redis install  #看视频说的，但是强烈怀疑可以用 $sudo apt install redis
+get the latest version
+upzip
+in the redis directory
+$ make && make install # if install cannot be done use  $ sudo make install
+
+check the version
+$redis -server --version
+$redis -cli --version
+$redis -sentinel --version
+
+线程管理
+redis server 会占用前端，所以如果想让它在后端运行
+$ redis-server &
+
+ 查看是否在运行
+$ ps -ef|grep redis
+$ jobs
+
+如果置于前端
+$ fg %no    #no 是用jobs查看出来最前面的数字 如果是1 就是 1
+
+$ ctl +z #可以把前端转到后端并停止
+在后端启动server
+$ bg %no
+
+
+
+
+启动Redis服务器，设置密码并后台运行,并将内容重定向到redis log里面
+$ redis-server (--port xxxx) (--requirepass 123) (--appendonly yes) (> redis.log) &
+#123是密码这种情况下 用client关机需要密码,appendonly 是将自己做过的操作全部记录起来，如果服务器重启，这样可以做到恢复数据
+# 如果用了appendonly，那么会产生appendonly.aof 文件，这个就是记录曾经做过的全部操作
+$ auth 123 #123是密码
+
+
+启动redis 客户端
+$ redis-cli (-h hostipaddress -p port)
+
+关机
+$ shutdown  #关闭redis
+$ quit #退出客户端
+
+
+Redis 命令相关
+Redis有五种类型，string，hash，list，set，zset（包括geo）
+
+$ set keyname valuedata #用set来设置键值对
+
+$ get keyname  #用get + keyname的形式获得 valuedata
+
+$ valuedata
+
+$ set keyname valuedata ex 30   # 设置数据30s后过期
+
+$ ttl keyname  # 查看剩余过期时间
+
+$ keys * #查看数据
+
+$ save  # 主动保存数据，因为redis 900s内有一个键值对变化，自动保存，60s内有一万个键值对变化自动保存， 用save这个命令主动保存
+
+$ bgsave #后台保存
+
+$ SELECT INDEX # 选取数据库，redis默认建立16个数据库
+
+$ flushdb  #清除当前database数据
+
+$ flushall #清除所有数据库数据
+
+$ dbsize  #查看当前数据库键值对个数
+
+$ append keyname xxx  # 向键加入xxx字符
+
+$ getrange keyname 2 5 # 取value的的第三到第六个字符，切片
+
+$ mset keyname1 value1 keyname2 value2 ...  # 多次设置键值对
+
+哈希存储
+对象 ——> 哈希函数 ->哈希码->对象在内存中储存的位置
+
+$ hset keyname field value
+
+$ mhset keyname1 field1 value1 keyname2 field2 value2...
+
+$ hget keyname
+
+$ hmget keyname field1 field2
+
+$ hvals keyname  # 显示value值
+
+$ hkeys keyname  # 显示keys值
+
+$ hgetall keyname
+
+$ hdel key field
+
+列表
+
+$ lpush key value1 value2 value3... # 注意，lpush是左插入，所以读取时，value3才是第一个值
+
+$ lrange key start end  #切片
+
+$ lpop key  value1 value2 value3...
+
+
+集合
+
+$ sadd key value1 value2 value3.... #放入元素
+
+$ smember key  #查看元素
+
+$ scad key  # 查看元素数量
+
+$ sismember key value1  #查看value1在不在集合里面
+
+$ sinter key1 key2  #查看key1和key2的合集
+
+$ sunion key1 key2 # 查看key1和key2的并集
+
+$ sdiff key1 key  # 查看key1和key2的非集
+
+$ spop key count # 随机取count个元素
+
+
+有序集合
+
+$ zadd key score1 member1 score2 member2...
+
+$ zrange key 0 -1
+
+$ zrevrange key 0 -1
+
+$ zincrby key score member  #在key里面给member 加 score数
+
+
+地理位置
+
+$ geoadd key long1 lat1 member1 long2 lat2 member2
+
+$ geodist key member1 member2 unit
+
+$ georadius key long1 lat1 radius unit (withdist/withcoord)  # 在key中找出在以 long1 lat1 为圆心，半径为 radius unit的member，可以显示dist也可以显示坐标
+
+读写分离
+
+将机器分为master和slave
+slave node只能读到由master添加的数据，自己不能添加数据
+$ replicaof xxxx  #成为xxx的子节点
+$ replicaof no one #解除主从关系
+
+
+=====================================================================
+在atom中运行无法找到已经安装的模块，首先确认atom运行的python是什么，os.path来知道
+然后看看那个模块 pip3 list在不在，然后在atom setting configure里面，command输入python3 run一下就行
+
+
+========================================================
+
+Redis修复持久化文件的工具
+
+$ redis-check-rdb dump.rdb
+$ redis-check-rdb --fix dump.rdb
+$ redis-check-aof appendonly.aof #检查
+$ redis-check-aof --fix appendonly.aof #修复
