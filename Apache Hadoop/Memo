@@ -1,1 +1,174 @@
+Hadoop
+狭义上说Hadoop指的是Apache这款开源框架，它的核心组建：
+HDFS Hadoop Distributed File System：解决海量数据存储
+YARN Yet Another Resource Negotiator：解决资源任务调度
+Mapreduce(分布式运算编程框架) ：解决海量数据计算
+
+=====================================================================
+Hadoop集群搭建：
+	HDFS集群：海量数据的存储： NameNode,DataNode,SecondaryNameNode
+	YARN集群：集群任务调度和运算资源的管理: ResouceManager,NodeManager
+
+Hadoop集群部署方式：Standalone,Psedu-Distributed,Cluster mode,前两种都是单机部署
+
+注意现在的hadoop node 在web ui上已经变成了http://localhost:9870/dfshealth.html， 如果是apache 3.2.1
+
+
+====================================================================
+HDFS 基本原理
+
+元数据：目录结构及文件分块位置信息叫做元数据
+副本机制：副本是为了容错，副本系数可以在文件创建时候指定，也可以在之后改变，副本默认是3,包括源文件本身，也就是说复制两份+自己本身，一共3份
+
+HDFS的设计初衷是一次写入多次读取，特别注意：不支持文件修改，所以HDFS适合底层存储服务，不适合做网盘等应用，延迟大
+
+HDFS基本操作
+Shell 命令行客户端
+
+hadoop fs <args>  #操作文件系统
+
+-ls 
+使用方法 $ hadoop fs -ls [-h] [R] <args>   h是人性化显示，R是递归，跟linux一样
+显示文件、目录信息
+
+
+$ hadoop fs -ls hdfs://node-1:9000/
+$ hadoop fs -ls / 		# 在环境配置 core-site.xml 里配置的fs.defaultFS 默认了hdfs：//localhost：9000
+
+$ hadoop fs -ls file:///home/zhiqiang  #查看文件系统
+
+
+-mkdir
+使用 $ hadoop fs -mkdir [-p] <paths>
+$ hadoop fs -mkdir -p /zhiqiang/hadoop/xxx
+
+-put
+$ hadoop fs -put [-f] [-p] [-<localscr1> ...] <dst>
+将单个src或者多个src从本地文件系统复制到目标文件系统
+-p 保留访问和修改时间，所有权和权限
+-f 覆盖目的地（如果已经存在）
+
+$ hadoop fs -put -f localfile1 localfile2 /zhiqiang/hadoop/hadoopdir
+
+-get
+使用 $ hadoop fs -get [-igorecrc] [-crc] [-p] [-f] <src> <localdst>
+
+-igorecrc : 跳过对下载文件的crc检查
+-crc： 为下载的文件写crc校验
+
+将文件复制到本地文件系统
+hadoop fs -get -f hdfs://host:port/user/hadoop/file localfile
+
+
+-appendToFile
+$ hadoop fs -appendToFile srcfile hdfs://host:port/targetfile  #因为配置过默认位置 hdfs://host:port可以不写即
+$ hadoop fs -appendToFile scrfile /targetfile
+
+
+-cat 
+$ hadoop fs -cat /hadoop/hadoopfile
+显示输出
+
+-tail
+$ hadoop fs -tail [-f] URI
+将文件的最后一千字显示道stdout
+-f 选项将在文件增长时输出附加数据
+$ hadoop fs -tail /hadoop/hadoopfile
+
+-getmerge
+合并下载多个文件
+比如hdfs的目录 /aaa/下有多个文件 log.1,log.2,log3 ...
+$ hadoop fs -getmerge /aaa/log.*  /log.sum #把这些文件，都合并到sum这个文件里
+
+-setrep
+改变一个文件的副本系数。-R选项用于递归改变目录下所有文件的副本系数
+$ hadoop fs -setrep -w 3 -R /user/hadoop/dir1
+
+====================================================================================================
+
+
+NameNode即Master 是HDFS的核心
+NameNode仅储存HDFS的元数据：文件系统中所有文件的目录树，并跟踪整个集群文件。
+NameNode不存储实际数据或数据集。数据存储在DataNodes中
+NameNode不会持久化存储每个文件中的各个块所在的datanode的位置信息，这些信息会在系统启动时从数据节点重建
+NameNode是hadoop集群的单点故障
+NameNode的职责：
+1.响应所有客户端的请求
+2.维护文件系统的目录树（元数据）
+3.管理DataNodes
+
+DataNode
+负责实际存储在HDFS。
+DataNode启动时，将自己发布到NameNode并汇报自己负责持有的块列表
+block汇报时间间隔取参数dfs.blockreprt.intervalMsec,参数未配置的默认为6小时
+
+====================================================================================================
+
+HDFS上传文件流程
+
+先切片文件后，hdfs shell客户端:请求上传文件-> NameNode检测文件系统目录树->允许上传文件->请求上传split后的文件并且备份3份->NameNode检测dataNode信息池，返回可用的3台DataNode IP
+->返回可用的DataNode IP（d1,d2,d3）给hdfs shell客户端 # 返回的地址按照网络拓扑上距离来排序，离客户端最近的排在前面->客户端与datanode建立连接，请求数据传输，建立pipeline,要
+建立起备份3份的pipeline->反馈pipeline建立完毕->建立数据传输的stream，以packet为单位发送数据64k->到了每个datanode都保存传递过来的源源不断的数据包->保存数据包->接受包的同时需要进行数据校验和数据保存成功的反馈到客户端
+
+备份的存储策略为本地一份，同rack的另一个DataNode一份，不同rack的某一个DataNode一份。
+
+
+HDFS读取文件流程
+HDFS shell客户端 hadoop fs -get/a.txt/root/ ->NameNode 请求下载文件->NameNode 返回跟请求相关的文件所有的元数据->到Datanode请求下载文件的分块->客户端把该文件的所有块都下载过来进行合并成为文件的最终形式
+
+
+===================================================================
+Mapreduce
+reducetask个数跟最终输出文件的个数（文件被分成几个部分）有对等关系
+默认情况下，只有一个reducetask 即part-r-00000
+如果手动的去改变reducetask个数
+job.setNumReduceTasks(N)最终输出的结果文件就会被分成N个部分
+数据分区的默认规则
+根据map输出中 key ，value的key
+key.hashcode%reducetaskNum
+key的哈希值取模
+
+Mapreduce 工作原理
+
+逻辑切片：逐个遍历待处理的数据目录下的文件
+split size == block size ==128M
+
+比如一个文件 1.txt 的大小 150M , 2.txt 的大小 80M
+
+split1-> 1.txt 0 --128M
+split2-> 1.txt 128M--150M
+split3 -> 2.txt 0 --80M
+
+切片的个数就决定本次mr程序启动了多少个maptask
+============================================
+Reduce
+reducetask把所有属于自己分区的数据拉取过来，按照key的字典序进行排序，按照key是否相同作为一组来调用
+我们的重写的reduce方法
+
+
+==============================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
