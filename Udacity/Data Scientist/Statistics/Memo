@@ -35,6 +35,7 @@ statistics的方法是，首先我们有一个样本集合，从这个样本集�
 然后利用bootstrapping方法，找到抽取样本的正太分布，抽取次数越多，样本的正态分布中心越趋近于population中的parameter
 比如要研究喝咖啡人的概率,我们只有200 个人的数据，我们有放回的从这200人中抽N=100次，组成一个样本集合，然后重复10000次，
 这样相当于我们有10000个的100个人的样本，然后去利用这个样本去做发现正态分布，这个正太分布的中心就接近于喝咖啡人的真实概率。
+参看同文件夹下的confidence_interval 案例
 +++++++++++++++++++confidence intervals+++++++++++++++++++++++++++++++
 Using confidence intervals and hypothesis testing, you are able to provide statistical significance in making decisions.
 However, it is also important to take into consideration practical significance in making decisions. 
