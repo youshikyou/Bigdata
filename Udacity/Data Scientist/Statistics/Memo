@@ -18,3 +18,10 @@ p*(1-p)/n  is the theoretical variance of the sampling distribution for bionomia
 
 In general, we say if we have a random variable, X, with variance of σ^2
  , then the distribution of which the sampling distribution of the sample mean, has a variance of (σ^2)/n
+ 
+ 
+The Central Limit Theorem states that with large enough sample sizes our sample mean will follow a normal distribution, 
+but it turns out this is true for more than just the sample mean.
+
+The Law of Large Numbers states that as a sample size increases, the sample mean will get closer to the population mean.
+In general, if our statistic is a "good" estimate of a parameter, it will approach our parameter with larger sample sizes.
