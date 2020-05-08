@@ -1,0 +1,1 @@
+np.percentile(bootstrap_mean_dis, 2.5), np.percentile(bootstrap_mean_dis, 97.5)
