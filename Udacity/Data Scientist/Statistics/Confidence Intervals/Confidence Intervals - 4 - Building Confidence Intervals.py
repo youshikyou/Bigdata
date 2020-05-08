@@ -94,3 +94,24 @@ coffee_full[coffee_full['drinks_coffee'] == False]['height'].mean()
 
 # Captured by our interval, but not the exact same as the sample mean
 
+
+
+
+
+
+"""
+For 10,000 iterations bootstrap your sample data, 
+compute the difference in the average height for coffee drinkers and the average height non-coffee drinkers for individuals under 21 years old. 
+Using your sampling distribution, build a 95% confidence interval. 
+"""
+diffs_coff_under21 = []
+for _ in range(10000):
+    bootsamp = sample_data.sample(200, replace = True)
+    under21_coff_mean = bootsamp.query("age == '<21' and drinks_coffee == True")['height'].mean()
+    under21_nocoff_mean = bootsamp.query("age == '<21' and drinks_coffee == False")['height'].mean()
+    diffs_coff_under21.append(under21_nocoff_mean - under21_coff_mean)
+    
+np.percentile(diffs_coff_under21, 2.5), np.percentile(diffs_coff_under21, 97.5)
+# For the under21 group, we have evidence that the non-coffee drinkers are on average taller
+
+
