@@ -43,6 +43,16 @@ Practical significance takes into consideration other factors of your situation 
 Constraints like space, time, or money are important in business decisions. 
 However, they might not be accounted for directly in a statistical test.
 
+It is important to understand the way that your sample size and confidence level relate to the confidence interval you achieve at the end of your analysis.
 
+Assuming you control all other items of your analysis:
+
+Increasing your sample size will decrease the width of your confidence interval.
+Increasing your confidence level (say 95% to 99%) will increase the width of your confidence interval.
+You saw that you can compute:
+
+The confidence interval width as the difference between your upper and lower bounds of your confidence interval.
+The margin of error is half the confidence interval width, 
+and the value that you add and subtract from your sample estimate to achieve your confidence interval final results.
 
 
