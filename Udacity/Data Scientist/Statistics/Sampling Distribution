@@ -2,7 +2,6 @@ import numpy as np
 import matplotlib
 import matplotlib.pyplot as plt
 
-import numpy as np
 np.random.seed(42)
 
 students = np.array([1,0,1,1,1,1,0,0,0,0,1,1,1,1,1,1,1,1,1,1,0])
@@ -31,7 +30,7 @@ print(sample_props)
 
 
 #4. What is the mean proportion of all 10,000 of these proportions? This is often called the mean of the sampling distribution.
-mean_sam_dis= np.mean(sample_props)
+mean_sam_dis= np.mean(np.array(sample_props))
 print(mean_sam_dis)
 
 #5. What are the variance and standard deviation for the original 21 data values?
