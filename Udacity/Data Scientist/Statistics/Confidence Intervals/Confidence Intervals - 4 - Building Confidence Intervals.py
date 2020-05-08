@@ -109,6 +109,7 @@ for _ in range(10000):
     bootsamp = sample_data.sample(200, replace = True)
     under21_coff_mean = bootsamp.query("age == '<21' and drinks_coffee == True")['height'].mean()
     under21_nocoff_mean = bootsamp.query("age == '<21' and drinks_coffee == False")['height'].mean()
+    #bootsamp[(bootsamp['age']=='<21')&(bootsamp['drinks_coffee']==False)]['height'].mean()也可以
     diffs_coff_under21.append(under21_nocoff_mean - under21_coff_mean)
     
 np.percentile(diffs_coff_under21, 2.5), np.percentile(diffs_coff_under21, 97.5)
