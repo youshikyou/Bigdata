@@ -1,5 +1,0 @@
-#confidence interval
-np.percentile(bootstrap_mean_dis, 2.5), np.percentile(bootstrap_mean_dis, 97.5)
-
-#sample n times with replacement
-df.sample(n,replace =True) 
