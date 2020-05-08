@@ -29,7 +29,12 @@ but it turns out this is true for more than just the sample mean.
 The Law of Large Numbers states that as a sample size increases, the sample mean will get closer to the population mean.
 In general, if our statistic is a "good" estimate of a parameter, it will approach our parameter with larger sample sizes.
 
-
+bootstrapping:自助法是一种从给定训练集中有放回的均匀抽样
+想要得到一个population的parameter，我们用statistics的方法去逼近。
+statistics的方法是，首先我们有一个样本集合，从这个样本集合里面，我们需要采集N个样本（N要合理的多，大数定理），
+然后利用bootstrapping方法，找到抽取样本的正太分布，抽取次数越多，样本的正态分布中心越趋近于population中的parameter
+比如要研究喝咖啡人的概率,我们只有200 个人的数据，我们有放回的从这200人中抽N=100次，组成一个样本集合，然后重复10000次，
+这样相当于我们有10000个的100个人的样本，然后去利用这个样本去做发现正态分布，这个正太分布的中心就接近于喝咖啡人的真实概率。
 +++++++++++++++++++confidence intervals+++++++++++++++++++++++++++++++
 Using confidence intervals and hypothesis testing, you are able to provide statistical significance in making decisions.
 However, it is also important to take into consideration practical significance in making decisions. 
