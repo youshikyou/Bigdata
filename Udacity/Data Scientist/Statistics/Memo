@@ -7,6 +7,9 @@ Statistics and parameters are generally the mean or proportion for a group.
 Statistics being the value for the sample. Parameters being the value for the population. 
 The population is our entire group of interest, while a sample is the selected subset of the population.
 
+
+
++++++++++++++++++++sampling++++++++++++++++++++++++++++++++++++++++++++
 A sampling distribution is the distribution of a statistic.
 
 1.The sampling distribution is centered on the original parameter value. !!!!!!!!
@@ -25,3 +28,15 @@ but it turns out this is true for more than just the sample mean.
 
 The Law of Large Numbers states that as a sample size increases, the sample mean will get closer to the population mean.
 In general, if our statistic is a "good" estimate of a parameter, it will approach our parameter with larger sample sizes.
+
+
++++++++++++++++++++confidence intervals+++++++++++++++++++++++++++++++
+Using confidence intervals and hypothesis testing, you are able to provide statistical significance in making decisions.
+However, it is also important to take into consideration practical significance in making decisions. 
+Practical significance takes into consideration other factors of your situation that might not be considered directly in the results of your hypothesis test or confidence interval.
+Constraints like space, time, or money are important in business decisions. 
+However, they might not be accounted for directly in a statistical test.
+
+
+
+
