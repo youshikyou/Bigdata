@@ -55,4 +55,10 @@ The confidence interval width as the difference between your upper and lower bou
 The margin of error is half the confidence interval width, 
 and the value that you add and subtract from your sample estimate to achieve your confidence interval final results.
 
+Confidence Intervals (& Hypothesis Testing) vs. Machine Learning
+Confidence intervals take an aggregate approach towards the conclusions made based on data, 
+as these tests are aimed at understanding population parameters (which are aggregate population values).
+
+Alternatively, machine learning techniques take an individual approach towards making conclusions, 
+as they attempt to predict an outcome for each specific data point.
 
