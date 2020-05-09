@@ -126,6 +126,23 @@ you can find the statistic(s) that best estimates the parameter(s) you want to e
 you can bootstrap to simulate the sampling distribution. 
 Then you can use your sampling distribution to assist in choosing the appropriate hypothesis.
 
+========================P value understanding and example==================
+P value画的方向应该与H1的方向一致，这样才能得出，P越大，越in favor of H0，越小，越reject H0
+
+H0:μ>=5
+H1:μ<5
+sample mean = 10, based on the sample mean,we would expect the population mean to be close to this.
+Because 10 is to the right of the null mean of 5, and the alternative is less than. At 5,plot a normal distribution
+At 10, we shade to the left.
+The shaded area is obviously large. so P value is large. When P value is large, we should be in favor of H0.
+
+Let's reverse the condition.
+H0:μ<=5
+H1:μ>5
+sample mean = 10, we would expect the H0 should be rejected based on sample mean.
+Check the P value, at 5,plot a normal distribution.
+At 10, we shade to the right becase the alternative is greater than. P value is relatively small, we should reject H0
+
 
 
 
