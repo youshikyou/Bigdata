@@ -105,5 +105,30 @@ to ensure that a particular error never occurs (never a type I error assuming we
 However, more generally, there is a relationship where with a single set of data decreasing your chance of one type of error, 
 increases the chance of the other error occurring.
 
+=================================================================================
+You are always performing hypothesis tests on population parameters, never on statistics. 
+Statistics are values that you already have from the data, 
+so it does not make sense to perform hypothesis tests on these values.
+
+Common hypothesis tests include:
+Testing a population mean (One sample t-test).
+Testing the difference in means (Two sample t-test)
+Testing the difference before and after some treatment on the same individual (Paired t-test)
+Testing a population proportion (One sample z-test)
+Testing the difference between population proportions (Two sample z-test)
+
+You can use one of these sites to provide a t-table or z-table to support one of the above approaches:
+t-table
+t-table or z-table
+There are literally hundreds of different hypothesis tests! 
+However, instead of memorizing how to perform all of these tests, 
+you can find the statistic(s) that best estimates the parameter(s) you want to estimate, 
+you can bootstrap to simulate the sampling distribution. 
+Then you can use your sampling distribution to assist in choosing the appropriate hypothesis.
+
+
+
+
+
 
 
