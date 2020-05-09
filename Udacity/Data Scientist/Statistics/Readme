@@ -90,7 +90,20 @@ Here μ1 represents the population mean return from the new page.
 Similarly, μ2 represents the population mean return from the old page.
 ========================================================================
 
-A Type I Error is when the alternative is chosen, but the null is actually true
+Type I Errors
+Type I errors have the following features:
+You should set up your null and alternative hypotheses, so that the worse of your errors is the type I error.
+They are denoted by the symbol α.
+The definition of a type I error is: Deciding the alternative (H1) is true, when actually (H0) is true.
+Type I errors are often called false positives.
+Type II Errors
+They are denoted by the symbol β.The definition of a type II error is: Deciding the null (H0) is true, 
+when actually (H1) is true.
+Type II errors are often called false negatives.
+In the most extreme case, we can always choose one hypothesis (say always choosing the null)
+to ensure that a particular error never occurs (never a type I error assuming we always choose the null).
+However, more generally, there is a relationship where with a single set of data decreasing your chance of one type of error, 
+increases the chance of the other error occurring.
 
 
 
