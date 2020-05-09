@@ -127,8 +127,17 @@ you can bootstrap to simulate the sampling distribution.
 Then you can use your sampling distribution to assist in choosing the appropriate hypothesis.
 
 ========================P value understanding and example==================
-P value画的方向应该与H1的方向一致，这样才能得出，P越大，越in favor of H0，越小，越reject H0
+The p-value is the probability of getting our statistic or a more extreme value if the null is true.
+Therefore, small p-values suggest our null is not true. Rather, our statistic is likely to have come from a different distribution than the null.
+When the p-value is large, we have evidence that our statistic was likely to come from the null hypothesis.
+Therefore, we do not have evidence to reject the null.
+By comparing our p-value to our type I error threshold (α), we can make our decision about which hypothesis we will choose.
+pval≤α⇒ Reject H0
+pval>α⇒ Fail to Reject H0	
 
+
+P value画的方向应该与H1的方向一致，这样才能得出，P越大，越in favor of H0，越小，越reject H0
+Example
 H0:μ>=5
 H1:μ<5
 sample mean = 10, based on the sample mean,we would expect the population mean to be close to this.
