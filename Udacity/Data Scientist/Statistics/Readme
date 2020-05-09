@@ -7,8 +7,6 @@ Statistics and parameters are generally the mean or proportion for a group.
 Statistics being the value for the sample. Parameters being the value for the population. 
 The population is our entire group of interest, while a sample is the selected subset of the population.
 
-
-
 +++++++++++++++++++sampling++++++++++++++++++++++++++++++++++++++++++++
 A sampling distribution is the distribution of a statistic.
 
@@ -36,6 +34,8 @@ statistics的方法是，首先我们有一个样本集合，从这个样本集�
 比如要研究喝咖啡人的概率,我们只有200 个人的数据，我们有放回的从这200人中抽N=100次，组成一个样本集合，然后重复10000次，
 这样相当于我们有10000个的100个人的样本，然后去利用这个样本去做发现正态分布，这个正太分布的中心就接近于喝咖啡人的真实概率。
 参看同文件夹下的confidence_interval 案例
+
+
 +++++++++++++++++++confidence intervals+++++++++++++++++++++++++++++++
 Using confidence intervals and hypothesis testing, you are able to provide statistical significance in making decisions.
 However, it is also important to take into consideration practical significance in making decisions. 
@@ -61,4 +61,25 @@ as these tests are aimed at understanding population parameters (which are aggre
 
 Alternatively, machine learning techniques take an individual approach towards making conclusions, 
 as they attempt to predict an outcome for each specific data point.
+
+++++++++++++++++++++++++++++++++hypothesis testing++++++++++++++++++++++++++++++++++++
+The H_0,H_0 is true before you collect any data.
+
+H_0  usually states there is no effect or that two groups are equal.
+
+The H_0 and H_1 are competing, non-overlapping hypotheses.
+H1 is what we would like to prove to be true.
+H_0 contains an equal sign of some kind - either =, <=, or >=.
+
+H_1 contains the opposition of the null - either ≠, >>, or <<.
+You saw that the statement, "Innocent until proven guilty" is one that suggests the following hypotheses are true:
+H_0 Innocent
+H_1 Guilty
+
+We can relate this to the idea that "innocent" is true before we collect any data.
+Then the alternative must be a competing, non-overlapping hypothesis. 
+Hence, the alternative hypothesis is that an individual is guilty.
+
+
+
 
