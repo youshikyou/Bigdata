@@ -80,6 +80,19 @@ We can relate this to the idea that "innocent" is true before we collect any dat
 Then the alternative must be a competing, non-overlapping hypothesis. 
 Hence, the alternative hypothesis is that an individual is guilty.
 
+Before collecting any data, the null hypothesis is the hypothesis we believe to be true.
+
+Example:
+we wanted to test if a new page was better than an existing page, 
+we set that up in the alternative. Two indicators are that the null should hold the equality,
+and the statement we would like to be true should be in the alternative. Therefore, it would look like this:
+
+H_0: μ1≤μ2
+
+H_1: μ1>μ2
+
+Here μ1 represents the population mean return from the new page. 
+Similarly, μ2 represents the population mean return from the old page.
 
 
 
