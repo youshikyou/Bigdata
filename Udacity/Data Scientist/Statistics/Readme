@@ -34,7 +34,7 @@ statistics的方法是，首先我们有一个样本集合，从这个样本集�
 比如要研究喝咖啡人的概率,我们只有200 个人的数据，我们有放回的从这200人中抽N=100次，组成一个样本集合，然后重复10000次，
 这样相当于我们有10000个的100个人的样本，然后去利用这个样本去做发现正态分布，这个正太分布的中心就接近于喝咖啡人的真实概率。
 参看同文件夹下的confidence_interval 案例
-
+https://stats.stackexchange.com/questions/26088/explaining-to-laypeople-why-bootstrapping-works
 
 +++++++++++++++++++confidence intervals+++++++++++++++++++++++++++++++
 Using confidence intervals and hypothesis testing, you are able to provide statistical significance in making decisions.
@@ -193,5 +193,15 @@ A two-sided hypothesis test (that is a test involving a \neq≠ in the alternati
 For example, a 95% confidence interval will draw the same conclusions as a hypothesis test with a type I error rate of 0.05 in terms of which hypothesis to choose, because:
 1 - 0.95 =0.05
 assuming that the alternative hypothesis is a two sided test.
+
+===================================Hypothesis Recap
+https://rebeccaebarnes.github.io/2018/05/01/what-is-a-p-value
+http://onlinestatbook.com/2/sampling_distributions/samp_dist_mean.html
+https://www.statsmodels.org/stable/glm.html
+
+
+
+
+
 
 
