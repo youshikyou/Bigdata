@@ -159,7 +159,8 @@ Therefore, the wording used in conclusions of hypothesis testing includes:
 We reject the null hypothesis or We fail to reject the null hypothesis. 
 This lends itself to the idea that you start with the null hypothesis true by default, 
 and "choosing" the null at the end of the test would have been the choice even if no data were collected.
-=====================================================
+
+============================Notice of the large sample size=========================
 One of the most important aspects of interpreting any statistical results 
 (and one that is frequently overlooked) is assuring that your sample is truly representative of your population of interest.
 
@@ -174,7 +175,8 @@ Hypothesis testing takes an aggregate approach towards the conclusions made base
 as these tests are aimed at understanding population parameters (which are aggregate population values).
 Alternatively, machine learning techniques take an individual approach towards making conclusions, 
 as they attempt to predict an outcome for each specific data point.
-==============================================================================
+
+==================================Lost of tests perfromed============================================
 When performing more than one hypothesis test, your type I error compounds.
 In order to correct for this, a common technique is called the Bonferroni correction. 
 This correction is very conservative, but says that your new type I error rate should be the error rate you actually want divided by the number of tests you are performing.
@@ -185,6 +187,11 @@ Additional techniques to protect against compounding type I errors include:
  Tukey correction
  Q-values
 
-
+======================comparion between confidence interval and hypothesis testing===============
+A two-sided hypothesis test (that is a test involving a \neq≠ in the alternative) is the same in terms of the conclusions made as a confidence interval as long as:
+1 - CI =α
+For example, a 95% confidence interval will draw the same conclusions as a hypothesis test with a type I error rate of 0.05 in terms of which hypothesis to choose, because:
+1 - 0.95 =0.05
+assuming that the alternative hypothesis is a two sided test.
 
 
