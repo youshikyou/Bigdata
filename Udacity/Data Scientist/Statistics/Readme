@@ -152,6 +152,13 @@ sample mean = 10, we would expect the H0 should be rejected based on sample mean
 Check the P value, at 5,plot a normal distribution.
 At 10, we shade to the right becase the alternative is greater than. P value is relatively small, we should reject H0
 
+The word accept is one that is avoided when making statements regarding the null and alternative. 
+You are not stating that one of the hypotheses is true. 
+Rather, you are making a decision based on the likelihood of your data coming from the null hypothesis with regard to your type I error threshold.
+Therefore, the wording used in conclusions of hypothesis testing includes:
+We reject the null hypothesis or We fail to reject the null hypothesis. 
+This lends itself to the idea that you start with the null hypothesis true by default, 
+and "choosing" the null at the end of the test would have been the choice even if no data were collected.
 
 
 
