@@ -63,36 +63,34 @@ Alternatively, machine learning techniques take an individual approach towards m
 as they attempt to predict an outcome for each specific data point.
 
 ++++++++++++++++++++++++++++++++hypothesis testing++++++++++++++++++++++++++++++++++++
-The H_0,H_0 is true before you collect any data.
-
+H_0 is true before you collect any data.
 H_0  usually states there is no effect or that two groups are equal.
 
 The H_0 and H_1 are competing, non-overlapping hypotheses.
 H1 is what we would like to prove to be true.
 H_0 contains an equal sign of some kind - either =, <=, or >=.
-
 H_1 contains the opposition of the null - either ≠, >>, or <<.
+
 You saw that the statement, "Innocent until proven guilty" is one that suggests the following hypotheses are true:
 H_0 Innocent
 H_1 Guilty
-
 We can relate this to the idea that "innocent" is true before we collect any data.
 Then the alternative must be a competing, non-overlapping hypothesis. 
 Hence, the alternative hypothesis is that an individual is guilty.
-
 Before collecting any data, the null hypothesis is the hypothesis we believe to be true.
 
+========================================================================================
 Example:
 we wanted to test if a new page was better than an existing page, 
 we set that up in the alternative. Two indicators are that the null should hold the equality,
 and the statement we would like to be true should be in the alternative. Therefore, it would look like this:
-
 H_0: μ1≤μ2
-
 H_1: μ1>μ2
-
 Here μ1 represents the population mean return from the new page. 
 Similarly, μ2 represents the population mean return from the old page.
+========================================================================
+
+A Type I Error is when the alternative is chosen, but the null is actually true
 
 
 
