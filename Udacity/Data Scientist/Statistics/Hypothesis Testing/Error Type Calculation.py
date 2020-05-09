@@ -9,17 +9,12 @@
 # 
 # Use the exercises below to assist in answering the quiz questions at the bottom of this page.
 
-# In[3]:
-
 
 import numpy as np
 import pandas as pd
 
 jud_data = pd.read_csv('judicial_dataset_predictions.csv')
 par_data = pd.read_csv('parachute_dataset.csv')
-
-
-# In[4]:
 
 
 jud_data.head()
