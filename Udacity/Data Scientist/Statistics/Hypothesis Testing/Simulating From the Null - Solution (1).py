@@ -5,8 +5,6 @@
 # 
 # Load in the data below, and use the exercises to assist with answering the quiz questions below.
 
-# In[2]:
-
 
 import pandas as pd
 import numpy as np
@@ -45,7 +43,6 @@ sample_data = full_data.sample(200)
 
 # `3.` For 10,000 iterations: bootstrap the sample data, calculate the mean height for coffee drinkers and non-coffee drinkers, and calculate the difference in means for each sample.  You will want to have three arrays at the end of the iterations - one for each mean and one for the difference in means.  Use the results of your sampling distribution, to answer the third quiz question below.
 
-# In[4]:
 
 
 nocoff_means, coff_means, diffs = [], [], []
@@ -61,32 +58,21 @@ for _ in range(10000):
     
 
 
-# In[5]:
-
 
 np.std(nocoff_means) # the standard deviation of the sampling distribution for nocoff
 
-
-# In[6]:
 
 
 np.std(coff_means) # the standard deviation of the sampling distribution for coff
 
 
-# In[7]:
-
 
 np.std(diffs) # the standard deviation for the sampling distribution for difference in means
-
-
-# In[12]:
 
 
 plt.hist(nocoff_means, alpha = 0.5);
 plt.hist(coff_means, alpha = 0.5); # They look pretty normal to me!
 
-
-# In[13]:
 
 
 plt.hist(diffs, alpha = 0.5); # again normal - this is by the central limit theorem
@@ -96,20 +82,12 @@ plt.hist(diffs, alpha = 0.5); # again normal - this is by the central limit theo
 
 # ** We would expect the sampling distribution to be normal by the Central Limit Theorem, and we know the standard deviation of the sampling distribution of the difference in means from the previous question, so we can use this to simulate draws from the sampling distribution under the null hypothesis.  If there is truly no difference, then the difference between the means should be zero.**
 
-# In[15]:
-
 
 null_vals = np.random.normal(0, np.std(diffs), 10000) # Here are 10000 draws from the sampling distribution under the null
 
 
-# In[17]:
-
 
 plt.hist(null_vals); #Here is the sampling distribution of the difference under the null
-
-
-# In[ ]:
-
 
 
 
