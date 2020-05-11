@@ -27,3 +27,19 @@ The takeaway for us is that we can find the optimal β estimates by calculating 
 In the following video, you will use statsmodels to obtain the coefficients 
 similar to how we did it in the last concept, but you will also solve for the coefficients 
 using the equation above to show the results are not magic.
+
++++++++++++The Math Behind Dummy Variables++++++++++++++++
+The categorical variables will be changed to dummy variables in order to be added to your linear models.
+Then, you will need to drop one of the dummy columns in order to make your matrices full rank.
+If you remember back to the closed form solution for the coefficients in regression, we have β is estimated by
+(X'X)^{-1}X'y
+In order to take the inverse of (X'X)(X′X), the matrix X must be full rank. 
+That is, all of the columns of X must be linearly independent.
+If you do not drop one of the columns (from the model, not from the dataframe)
+when creating the dummy variables, your solution is unstable and results from Python are unreliable. 
+The takeaway is ... when you create dummy variables using 0, 1 encodings, 
+you always need to drop one of the columns from the model to make sure your matrices are full rank 
+(and that your solutions are reliable from Python).
+The reason for this is linear algebra. Specifically, in order to invert matrices, 
+a matrix must be full rank (that is, all the columns need to be linearly independent). 
+Therefore, you need to drop one of the dummy columns, to create linearly independent columns (and a full rank matrix).
