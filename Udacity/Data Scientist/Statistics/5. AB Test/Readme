@@ -1,0 +1,54 @@
+A/B tests are used to test changes on a web page by running an experiment where a control group sees the old version, 
+while the experiment group sees the new version. 
+A metric is then chosen to measure the level of engagement from users in each group. 
+These results are then used to judge whether one version is more effective than the other. 
+A/B testing is very much like hypothesis testing with the following hypotheses:
+Null Hypothesis: The new version is no better, or even worse, than the old version
+Alternative Hypothesis: The new version is better than the old version
+If we fail to reject the null hypothesis, the results would suggest keeping the old version. 
+If we reject the null hypothesis, the results would suggest launching the change. 
+These tests can be used for a wide variety of changes, from large feature additions to small adjustments in color, 
+to see what change maximizes your metric the most.
+
+A/B testing also has its drawbacks.
+It can help you compare two options, but it can't tell you about an option you haven’t considered. 
+It can also produce bias results when tested on existing users, due to factors like change aversion and novelty effect.
+
+Change Aversion: Existing users may give an unfair advantage to the old version, 
+simply because they are unhappy with change, even if it’s ultimately for the better.
+
+Novelty Effect: Existing users may give an unfair advantage to the new version, 
+because they’re excited or drawn to the change, even if it isn’t any better in the long run.
+
+=============================AB Test steps===================
+We computed the observed difference between the metric, click through rate, for the control and experiment group.
+We simulated the sampling distribution for the difference in proportions (or difference in click through rates).
+We used this sampling distribution to simulate the distribution under the null hypothesis, 
+by creating a random normal distribution centered at 0 with the same spread and size.
+We computed the p-value by finding the proportion of values in the null distribution that were greater than our observed difference.
+We used this p-value to determine the statistical significance of our observed difference.
+
+===================================Analyze Multiple metrics=============
+The more metrics you evaluate, the more likely you are to observe significant differences just by chance - 
+similar to what you saw in previous lessons with multiple tests. 
+Luckily, this multiple comparisons problem can be handled in several ways.
+Since the Bonferroni method is too conservative when we expect correlation among metrics, 
+we can better approach this problem with more sophisticated methods, such as the closed testing procedure, 
+Boole-Bonferroni bound, and the Holm-Bonferroni method. These are less conservative and take this correlation into account.
+If you do choose to use a less conservative method, just make sure the assumptions of that method are truly met in your situation, 
+and that you're not just trying to cheat on a p-value(https://freakonometrics.hypotheses.org/19817).  
+Choosing a poorly suited test just to 
+get significant results will only lead to misguided decisions that harm your company's performance in the long run.
+
+Difficulties in A/B Testing
+As you saw in the scenarios above, there are many factors to consider when designing an A/B test and drawing conclusions
+based on its results. To conclude, here are some common ones to consider.
+   - Novelty effect and change aversion when existing users first experience a change
+   - Sufficient traffic and conversions to have significant and repeatable results
+   - Best metric choice for making the ultimate decision (eg. measuring revenue vs. clicks)
+   - Long enough run time for the experiment to account for changes in behavior based on time of day/week or
+     seasonal events.
+   - Practical significance of a conversion rate (the cost of launching a new feature vs. the gain from the increase in conversion)
+   - Consistency among test subjects in the control and 
+     experiment group (imbalance in the population represented in each group can lead to situations
+     like Simpson's Paradox https://en.wikipedia.org/wiki/Simpson%27s_paradox)
