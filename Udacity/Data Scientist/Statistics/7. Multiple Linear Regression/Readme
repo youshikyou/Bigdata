@@ -16,3 +16,14 @@
  
  To grasp the linear algebra
  https://www.khanacademy.org/math/linear-algebra
+
+++++++++++++++++How Do We Find the "Right" Coefficients in Multiple Linear Regression+++++++++++++
+In the simple linear regression section, you saw how we were interested in minimizing the squared distance
+between each actual data point and the predicted value from our model.
+
+But in multiple linear regression, we are actually looking at points that live in not just a two dimensional space.
+For a full derivation of how this works, this article provides a breakdown of the steps.
+The takeaway for us is that we can find the optimal β estimates by calculating (X'X)^{-1}X'y
+In the following video, you will use statsmodels to obtain the coefficients 
+similar to how we did it in the last concept, but you will also solve for the coefficients 
+using the equation above to show the results are not magic.
