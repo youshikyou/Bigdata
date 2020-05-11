@@ -250,6 +250,26 @@ We used this p-value to determine the statistical significance of our observed d
 The more metrics you evaluate, the more likely you are to observe significant differences just by chance - 
 similar to what you saw in previous lessons with multiple tests. 
 Luckily, this multiple comparisons problem can be handled in several ways.
+Since the Bonferroni method is too conservative when we expect correlation among metrics, 
+we can better approach this problem with more sophisticated methods, such as the closed testing procedure, 
+Boole-Bonferroni bound, and the Holm-Bonferroni method. These are less conservative and take this correlation into account.
+If you do choose to use a less conservative method, just make sure the assumptions of that method are truly met in your situation, 
+and that you're not just trying to cheat on a p-value(https://freakonometrics.hypotheses.org/19817).  
+Choosing a poorly suited test just to 
+get significant results will only lead to misguided decisions that harm your company's performance in the long run.
+
+Difficulties in A/B Testing
+As you saw in the scenarios above, there are many factors to consider when designing an A/B test and drawing conclusions based on its results. 
+To conclude, here are some common ones to consider.
+   - Novelty effect and change aversion when existing users first experience a change
+   - Sufficient traffic and conversions to have significant and repeatable results
+   - Best metric choice for making the ultimate decision (eg. measuring revenue vs. clicks)
+   - Long enough run time for the experiment to account for changes in behavior based on time of day/week or seasonal events.
+   - Practical significance of a conversion rate (the cost of launching a new feature vs. the gain from the increase in conversion)
+   - Consistency among test subjects in the control and experiment group (imbalance in the population represented in each group can lead to situations like Simpson's Paradox https://en.wikipedia.org/wiki/Simpson%27s_paradox)
+
+
+
 
 
 
