@@ -33,7 +33,7 @@ The categorical variables will be changed to dummy variables in order to be adde
 Then, you will need to drop one of the dummy columns in order to make your matrices full rank.
 If you remember back to the closed form solution for the coefficients in regression, we have β is estimated by
 (X'X)^{-1}X'y
-In order to take the inverse of (X'X)(X′X), the matrix X must be full rank. 
+In order to take the inverse of (X'X), the matrix X must be full rank. 
 That is, all of the columns of X must be linearly independent.
 If you do not drop one of the columns (from the model, not from the dataframe)
 when creating the dummy variables, your solution is unstable and results from Python are unreliable. 
@@ -43,3 +43,4 @@ you always need to drop one of the columns from the model to make sure your matr
 The reason for this is linear algebra. Specifically, in order to invert matrices, 
 a matrix must be full rank (that is, all the columns need to be linearly independent). 
 Therefore, you need to drop one of the dummy columns, to create linearly independent columns (and a full rank matrix).
+The number of dummy variables we need to add is always the number of levels of the categorical variable minus 1.
