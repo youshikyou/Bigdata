@@ -30,3 +30,15 @@ an alternative where the parameter differs from zero. Therefore, if the slope is
 has a statistically significant linear relationship with the response.
 This in turn suggests that the x-variable should help us in predicting the response 
 (or at least be better than not having it in the model).
+
++++++++++ Rsquared+++++++++++++++++
+The Rsquared value is the square of the correlation coefficient.
+A common definition for the Rsquared variable is that it is the amount of variability in the response variable
+that can be explained by the x-variable in our model. In general, the closer this value is to 1, 
+the better our model fits the data.
+Many feel that Rsquared isn't a great measure (which is possibly true), 
+but I would argue that using cross-validation can assist us with validating any measure
+that helps us understand the fit of a model to our data. 
+Here, you can find one such argument explaining why one individual doesn't care for Rsquared.
+https://data.library.virginia.edu/is-r-squared-useless/
+
