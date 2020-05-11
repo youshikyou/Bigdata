@@ -19,3 +19,14 @@ and it might be more appropriate for certain cases of associating two variables.
 
 Correlation coefficient
 It is used for two variables.
+
+++++++ P value for slope in python model++++++++++++
+We can perform hypothesis tests for the coefficients in our linear models using Python (and other software).
+These tests help us determine if there is a statistically significant linear relationship between a particular variable 
+and the response. The hypothesis test for the intercept isn't useful in most cases.
+However, the hypothesis test for each x-variable is a test of if that population slope is equal to zero vs. 
+an alternative where the parameter differs from zero. Therefore, if the slope is different than zero
+(the alternative is true), we have evidence that the x-variable attached to that coefficient 
+has a statistically significant linear relationship with the response.
+This in turn suggests that the x-variable should help us in predicting the response 
+(or at least be better than not having it in the model).
