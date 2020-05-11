@@ -46,3 +46,13 @@ Therefore, you need to drop one of the dummy columns, to create linearly indepen
 The number of dummy variables we need to add is always the number of levels of the categorical variable minus 1.
 Example: if the categorical has a ratings scale of: 'great', 'good', 'okay', 'poor', or 'awful'. 
 There should be a total of 5 coefficients,the intercept plus 4 dummy variables for the other variables. 
+Which of the below are true regarding the dummy variables we add to our multiple linear regression models?
+Let X be the X matrix as defined in the previous Screencast:
+
+   -There should always be as many dummy variables added to your X matrix 
+     as the number of levels of each categorical variable minus 1.
+   -The reason for dropping a dummy variable is to assure that all of our columns are linearly independent.
+   -The reason for dropping a dummy variable is to assure that the dot product of X'X is invertible.
+   -The reason for dropping a dummy variable is to assure that your X matrix is full rank.
+
+
