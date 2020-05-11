@@ -20,14 +20,18 @@ np.random.seed(42)
 full_data = pd.read_csv('coffee_dataset.csv')
 
 
-# `1.` In this case imagine, we are interested in testing if the mean height of all individuals in the `full_data` is equal to 67.60 inches.  First, use **quiz 1** below to identify the null and alternative hypotheses for these cases. 
+# 1.In this case imagine, we are interested in testing if the mean height of all individuals in the `full_data` 
+# is equal to 67.60 inches.  First, use **quiz 1** below to identify the null and alternative hypotheses for these cases. 
 
 # $$H_0: \mu = 67.60$$
 # 
 # $$H_1: \mu \neq 67.60$$
 # 
 
-# `2.` What is the population mean?  Create a sample set of data using the below code.  What is the sample mean?  What is the standard deviation of the population?  What is the standard deviation of the sampling distribution of the mean of five draws? Simulate the sampling distribution for the mean of five values to see the shape and plot a histogram. Use **quiz 2** below to assure your answers are correct.  
+# 2.What is the population mean?  Create a sample set of data using the below code.  
+# What is the sample mean?  What is the standard deviation of the population?  
+# What is the standard deviation of the sampling distribution of the mean of five draws? 
+# Simulate the sampling distribution for the mean of five values to see the shape and plot a histogram.   
 
 
 sample1 = full_data.sample(5)
@@ -51,9 +55,13 @@ std_sampling_dist = np.std(sampling_dist_mean5)
 std_sampling_dist# the standard deviation of the sampling distribution
 
 
-# `3.` Using your null and alternative hypotheses as set up in question 1 and the results of your sampling distribution in question 2, simulate values of the mean values that you would expect from the null hypothesis.  Use these simulated values to determine a p-value to make a decision about your null and alternative hypotheses.  Check your solution using **quiz 3** and **quiz 4** below.
+# 3.Using your null and alternative hypotheses as set up in question 1 
+# and the results of your sampling distribution in question 2, 
+# simulate values of the mean values that you would expect from the null hypothesis.
+# Use these simulated values to determine a p-value to make a decision about your null and alternative hypotheses.
 # 
-# **Hint:** Use the numpy documentation [here](https://docs.scipy.org/doc/numpy-1.13.0/reference/generated/numpy.random.normal.html) to assist with your solution.
+# **Hint:** Use the numpy documentation 
+# (https://docs.scipy.org/doc/numpy-1.13.0/reference/generated/numpy.random.normal.html) to assist with your solution.
 
 null_mean = 67.60
 null_vals = np.random.normal(null_mean, std_sampling_dist, 10000)
@@ -73,7 +81,6 @@ prob_more_extreme_high = (null_vals > obs_mean).mean()
 prob_more_extreme_low = (null_mean - (obs_mean - null_mean) < null_vals).mean()
 
 pval = prob_more_extreme_low + prob_more_extreme_high
-pval
 
 
 # **The above shows a second possible method for obtaining the p-value.  
@@ -92,9 +99,11 @@ plt.axvline(x=upper_bound, color = 'red'); # where our sample mean falls on null
 print(upper_bound, lower_bound)
 
 
-# `4.` Now imagine if you received the same sample mean as you calculated from the sample in question 1 above, but that you actually retrieved it from a sample of 300.  What would the new standard deviation be for your sampling distribution for the mean of 300 values?  Additionally, what would your new p-value be for choosing between the null and alternative hypotheses you set up? Simulate the sampling distribution for the mean of five values to see the shape and plot a histogram.  Use your solutions here to answer the second to last quiz question below.
-# 
-# **Hint:**  If you get stuck, notice you can use the solution from quiz regarding finding the p-value earlier to assist with obtaining this answer with just a few small changes.
+# 4. Now imagine if you received the same sample mean as you calculated from the sample in question 1 above, 
+# but that you actually retrieved it from a sample of 300.  
+# What would the new standard deviation be for your sampling distribution for the mean of 300 values?
+# Additionally, what would your new p-value be for choosing between the null and alternative hypotheses you set up? 
+# Simulate the sampling distribution for the mean of five values to see the shape and plot a histogram.  
 
 sample2 = full_data.sample(300)
 
@@ -131,11 +140,9 @@ prob_more_extreme_high = (upper_bound < null_vals).mean()
 pval = prob_more_extreme_low + prob_more_extreme_high
 pval  # With such a large sample size, our sample mean that is super
       # close will be significant at an alpha = 0.1 level.
-
-
-# `5.` Reflect on what happened by answering the final quiz in this concept.
-
-# **Even with a very small difference between a sample mean and a hypothesized population mean, the difference will end up being significant with a very large sample size.**
+    
+# **Even with a very small difference between a sample mean and a hypothesized population mean, 
+# the difference will end up being significant with a very large sample size.**
 
 
 
