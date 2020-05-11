@@ -132,7 +132,7 @@ Therefore, small p-values suggest our null is not true. Rather, our statistic is
 When the p-value is large, we have evidence that our statistic was likely to come from the null hypothesis.
 Therefore, we do not have evidence to reject the null.
 By comparing our p-value to our type I error threshold (α), we can make our decision about which hypothesis we will choose.
-pval≤α⇒ Reject H0
+pval≤α⇒ Reject H0     statistic significance 
 pval>α⇒ Fail to Reject H0	
 
 
@@ -164,7 +164,7 @@ and "choosing" the null at the end of the test would have been the choice even i
 首先有一个H0的假设值，然后抽取一个sample set，计算出 sample set的mean，然后用bootstrap来获取sample distribution，
 计算出sampling的标准差，以假设的值为中心值，以sampling的标准差为标准差，
 做一个正态分布norm_sim = np.random.normal(H0的假设值,sampling distribution的标准差,size=N).
-再用sample set的mean作为一个bound，对称计算出另一个bound，
+再用sample set的mean作为一个bound（如果是two side画，需要对称计算出另一个bound）
 从得到的正太分布中，算取p value.
 例如下面这个例子是计算left shaded
 H0:μ>=5
