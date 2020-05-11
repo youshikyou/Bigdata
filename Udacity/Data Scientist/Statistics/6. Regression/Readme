@@ -1,1 +1,18 @@
+The response variable is what you want to predict, while the explanatory variable is the variable 
+you use to predict the response. A common way to visualize the relationship 
+between two variables in linear regression is using a scatterplot.
+You will see more on this in the concepts ahead.
 
+Scatter plots
+Scatter plots are a common visual for comparing two quantitative variables. 
+A common summary statistic that relates to a scatter plot is the correlation coefficient commonly denoted by r.
+Though there are a few different ways(https://www.statisticssolutions.com/correlation-pearson-kendall-spearman/)
+to measure correlation between two variables,
+the most common way is with Pearson's correlation coefficient(https://en.wikipedia.org/wiki/Pearson_correlation_coefficient). 
+Pearson's correlation coefficient provides the:
+  -Strength
+  -Direction
+of a linear relationship. 
+Spearman's Correlation Coefficient(https://en.wikipedia.org/wiki/Spearman%27s_rank_correlation_coefficient) 
+does not measure linear relationships specifically, 
+and it might be more appropriate for certain cases of associating two variables.
