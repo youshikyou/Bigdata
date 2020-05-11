@@ -174,8 +174,10 @@ H1:μ<5
 如果是
 H0:μ<=5
 H1:μ>5
-p value 就是 (norm_sim>sample set的mean).mean()
-再根据p value的大小来判断是否拒绝H0的假设
+p value 就是 (norm_sim>sample set的mean).mean(),计算的方向与H1相同
+再根据p value的大小来判断是否拒绝H0的假设。
+如果Pvalue < α,那么这个就是statistic significance。
+
 ============================Notice of the large sample size=========================
 One of the most important aspects of interpreting any statistical results 
 (and one that is frequently overlooked) is assuring that your sample is truly representative of your population of interest.
