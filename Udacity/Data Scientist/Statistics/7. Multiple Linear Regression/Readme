@@ -54,5 +54,9 @@ Let X be the X matrix as defined in the previous Screencast:
    -The reason for dropping a dummy variable is to assure that all of our columns are linearly independent.
    -The reason for dropping a dummy variable is to assure that the dot product of X'X is invertible.
    -The reason for dropping a dummy variable is to assure that your X matrix is full rank.
+   
+Notice that each of your comparisons are to the baseline category for the categorical variables.
+Also, each quantitative variable is interpreted as the expected change in the response for a one 
+unit increase in the quantitative variable.
 
 
