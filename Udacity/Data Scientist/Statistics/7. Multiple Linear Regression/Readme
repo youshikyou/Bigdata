@@ -130,8 +130,7 @@ Multicollinearity is when we have predictor variables that are correlated with o
 One of the main concerns of multicollinearity is that it can lead to coefficients being flipped from the direction 
 we expect from simple linear regression.
 One of the most common ways to identify multicollinearity is with bivariate plots or with variance inflation factors 
-(or VIFs). This is a topic we will dive into in the next concept, 
-so we won't spend as much time on it here.
+(or VIFs). https://etav.github.io/python/vif_factor_python.html
 
 
 
