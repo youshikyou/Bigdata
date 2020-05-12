@@ -132,5 +132,43 @@ we expect from simple linear regression.
 One of the most common ways to identify multicollinearity is with bivariate plots or with variance inflation factors 
 (or VIFs). https://etav.github.io/python/vif_factor_python.html
 
+We would like x-variables to be related to the response, but not to be related to one another.
+When our x-variables are correlated with one another, this is known as multicollinearity. 
+Multicollinearity has two potential negative impacts. As you saw in the previous example,
+
+1. The expected relationships between your x-variables and the response may not hold when multicollinearity is present. 
+That is, you may expect a positive relationship between the explanatory variables and the response
+(based on the bivariate relationships), but in the multiple linear regression case,
+it turns out the relationship is negative.
+Example: area, bedroom,bathroom in house price
+using seaborn
+seaborn.pairplot(df[['area','bedroom','bathroom']]). 
+We can see the strong positive relationship among these variables.
+But in the model, the bedroom has negative coefficient associated with it.
+
+2. Our hypothesis testing results may not be reliable. It turns out that having correlated explanatory variables 
+means that our coefficient estimates are less stable. That is, standard deviations (often called standard errors)
+associated with your regression coefficients are quite large. Therefore, a particular variable might be useful 
+for predicting the response, but because of the relationship it has with other x-variables, 
+you will no longer see this association.
+
+We have also looked at two different ways of identifying multicollinearity:
+  1.Looking at the correlation of each explanatory variable with each other explanatory variable
+  (with a plot or the correlation coefficient).
+  2.Looking at VIFs for each variable.
+  
+When VIFs are greater than 10, this suggests that multicollinearity is certainly a problem in your model. 
+Some experts even suggest that VIFs of greater than 5 can be problematic. 
+In most cases, not just one VIF is high, but rather many VIFs are high, 
+as these are measures of how related variables are with one another.
+The most common way of working with correlated explanatory variables in a multiple linear regression model
+is simply to remove one of the variables that is most related to the other variables. 
+Choosing an explanatory variable that you aren't interested in, or isn't as important to you, is a common choice.
+
+VIF_i = 1/(1-Ri^2), 
+x_i = b0+b1x1+b2x2...+bnxn
+all other x variables (excluding x_i)are used to predict then compute Ri^2. 
+It is used to know how x_i can be predicted by other x varialbes. 
+Ri is higher, the xi can be predicted by other variables,then VIF_i is higher. 
 
 
