@@ -3,7 +3,7 @@
  y^=b0+b1x1+b2x2+b3x3+b4x4
  Furthermore, you will learn about how to assess problems that can happen in multiple linear regression, 
  how to address these problems, and how to assess how well your model is performing.
- It turns out Rsquared can be used, but might be misleading. 
+ It turns out Rsquared can be used, but might be misleading. Rsquared is the correlation efficient's square.
  And, unfortunately, the correlation coefficient is only a measure of the linear relationship
  between two quantitative variables, so it will not be very useful in the multiple linear regression case.
  Here is a wonderful free supplementary book: Introduction to Statistical Learning.
