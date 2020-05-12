@@ -1,1 +1,7 @@
 
+Recall: True Positive / (True Positive + False Negative).
+Out of all the items that are truly positive, how many were correctly classified as positive.
+Or simply, how many positive items were 'recalled' from the dataset.
+
+Precision: True Positive / (True Positive + False Positive). 
+Out of all the items labeled as positive, how many truly belong to the positive class.
