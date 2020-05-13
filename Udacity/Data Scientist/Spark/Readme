@@ -1,0 +1,2 @@
+Distributed computing implies multiple CPUs each with its own memory. 
+Parallel computing uses multiple CPUs sharing the same memory.
