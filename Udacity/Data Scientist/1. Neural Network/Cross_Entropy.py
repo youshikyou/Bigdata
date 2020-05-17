@@ -9,3 +9,9 @@ def cross_entropy(Y, P):
     #Y = np.float_(Y)
     #P = np.float_(P)
     #-np.sum(Y * np.log(P) + (1 - Y) * np.log(1 - P))
+
+
+# multiple class CE formula
+# m class with n data
+# y_ij=1 stands for object_i belongs to jth class. p_ij stands for that probability. 
+# -sum(i from 1 to n) sum(j from 1 to m) y_ij * ln(p_ij)
