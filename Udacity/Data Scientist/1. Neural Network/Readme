@@ -27,3 +27,7 @@ Adam (Adaptive Moment Estimation) uses a more complicated exponential decay that
 RMSProp
 RMSProp (RMS stands for Root Mean Squared Error) decreases the learning rate by dividing it 
 by an exponentially decaying average of squared gradients.
+
+================================================================
+A Visual and Interactive Guide to the Basics of Neural Networks
+http://jalammar.github.io/visual-interactive-guide-basics-neural-networks/
