@@ -3,9 +3,9 @@
 
 # # Implementing the Gradient Descent Algorithm
 # 
-# In this lab, we'll implement the basic functions of the Gradient Descent algorithm to find the boundary in a small dataset. First, we'll start with some functions that will help us plot and visualize the data.
+# In this lab, we'll implement the basic functions of the Gradient Descent algorithm to find the boundary in a small dataset. 
+#First, we'll start with some functions that will help us plot and visualize the data.
 
-# In[1]:
 
 
 import matplotlib.pyplot as plt
@@ -28,8 +28,6 @@ def display(m, b, color='g--'):
 
 
 # ## Reading and plotting the data
-
-# In[2]:
 
 
 data = pd.read_csv('data.csv', header=None)
@@ -59,8 +57,6 @@ plt.show()
 # 
 # $$ b \longrightarrow b + \alpha (y - \hat{y})$$
 
-# In[54]:
-
 
 # Implement the following functions
 
@@ -71,7 +67,6 @@ def sigmoid(x):
 # Output (prediction) formula
 #def output_formula(features, weights, bias):
 #    return sigmoid(np.dot(np.array(features),np.array(weights).T)+bias)
-
 
 def output_formula(features, weights, bias):
     return sigmoid(np.dot(features, weights) + bias) # np.dot don't need to transpose
@@ -89,9 +84,8 @@ def update_weights(x, y, weights, bias, learnrate,output):
 
 
 # ## Training function
-# This function will help us iterate the gradient descent algorithm through all the data, for a number of epochs. It will also plot the data, and some of the boundary lines obtained as we run the algorithm.
-
-# In[55]:
+# This function will help us iterate the gradient descent algorithm through all the data, 
+#for a number of epochs. It will also plot the data, and some of the boundary lines obtained as we run the algorithm.
 
 
 np.random.seed(44)
@@ -153,26 +147,8 @@ def train(features, targets, epochs, learnrate, graph_lines=False):
 # - A plot of the data and some of the boundary lines obtained. The final one is in black. Notice how the lines get closer and closer to the best fit, as we go through more epochs.
 # - A plot of the error function. Notice how it decreases as we go through more epochs.
 
-# In[56]:
-
 
 train(X, y, epochs, learnrate, True)
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
 
 
 
