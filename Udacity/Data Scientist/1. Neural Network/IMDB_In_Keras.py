@@ -3,8 +3,6 @@
 
 # # Analyzing IMDB Data in Keras
 
-# In[ ]:
-
 
 # Imports
 import numpy as np
@@ -20,9 +18,8 @@ np.random.seed(42)
 
 
 # ## 1. Loading the data
-# This dataset comes preloaded with Keras, so one simple command will get us training and testing data. There is a parameter for how many words we want to look at. We've set it at 1000, but feel free to experiment.
-
-# In[ ]:
+# This dataset comes preloaded with Keras, so one simple command will get us training and testing data. 
+#There is a parameter for how many words we want to look at. We've set it at 1000, but feel free to experiment.
 
 
 # Loading the data (it's preloaded in Keras)
@@ -33,12 +30,10 @@ print(x_test.shape)
 
 
 # ## 2. Examining the data
-# Notice that the data has been already pre-processed, where all the words have numbers, and the reviews come in as a vector with the words that the review contains. For example, if the word 'the' is the first one in our dictionary, and a review contains the word 'the', then there is a 1 in the corresponding vector.
+# Notice that the data has been already pre-processed, where all the words have numbers, 
+#and the reviews come in as a vector with the words that the review contains. For example, if the word 'the' is the first one in our dictionary, and a review contains the word 'the', then there is a 1 in the corresponding vector.
 # 
 # The output comes as a vector of 1's and 0's, where 1 is a positive sentiment for the review, and 0 is negative.
-
-# In[ ]:
-
 
 print(x_train[1])
 print("-"*50)
@@ -46,9 +41,8 @@ print(y_train[1])
 
 
 # ## 3. One-hot encoding the output
-# Here, we'll turn the input vectors into (0,1)-vectors. For example, if the pre-processed vector contains the number 14, then in the processed vector, the 14th entry will be 1.
-
-# In[6]:
+# Here, we'll turn the input vectors into (0,1)-vectors. For example, if the pre-processed vector contains the number 14,
+#then in the processed vector, the 14th entry will be 1.
 
 
 # One-hot encoding the output into vector mode, each of length 1000
@@ -59,8 +53,6 @@ print(x_train[0])
 
 
 # And we'll also one-hot encode the output.
-
-# In[7]:
 
 
 # One-hot encoding the output
@@ -73,8 +65,6 @@ print(y_test.shape)
 
 # ## 4. Building the  model architecture
 # Build a model here using sequential. Feel free to experiment with different layers and sizes! Also, experiment adding dropout to reduce overfitting.
-
-# In[ ]:
 
 
 # TODO: Build the model architecture
@@ -98,9 +88,6 @@ model.summary()
 # ## 5. Training the model
 # Run the model here. Experiment with different batch_size, and number of epochs!
 
-# In[ ]:
-
-
 # TODO: Run the model. Feel free to experiment with different batch sizes and number of epochs.
 model.fit(x_train, y_train, epochs=1000, batch_size=100, verbose=0)
 
@@ -108,15 +95,8 @@ model.fit(x_train, y_train, epochs=1000, batch_size=100, verbose=0)
 # ## 6. Evaluating the model
 # This will give you the accuracy of the model, as evaluated on the testing set. Can you get something over 85%?
 
-# In[ ]:
-
-
 score = model.evaluate(x_test, y_test, verbose=0)
 print("Accuracy: ", score[1])
-
-
-# In[ ]:
-
 
 
 # Building the model architecture with one layer of length 100
@@ -126,11 +106,11 @@ model.add(Dropout(0.5))
 model.add(Dense(num_classes, activation='softmax'))
 model.summary()
 
-# Compiling the model using categorical_crossentropy loss, and rmsprop optimizer.
+# reference solution
 model.compile(loss='categorical_crossentropy',
               optimizer='rmsprop',
               metrics=['accuracy'])
-# Running and evaluating the model
+
 hist = model.fit(x_train, y_train,
           batch_size=32,
           epochs=10,
