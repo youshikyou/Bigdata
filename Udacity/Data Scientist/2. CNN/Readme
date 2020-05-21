@@ -1,2 +1,5 @@
 play around with some beginner code (for deep reinforcement learning)
 http://karpathy.github.io/2016/05/31/rl/
+
+keras callback
+https://machinelearningmastery.com/check-point-deep-learning-models-keras/
