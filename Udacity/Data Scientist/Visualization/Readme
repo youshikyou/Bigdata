@@ -1,2 +1,66 @@
 http://faculty.neu.edu.cn/cc/zhangyf/papers/How-to-Lie-with-Statistics.pdf
 https://video.udacity-data.com/topher/2019/November/5dc4a59c_how-to-spot-visualization-lies-flowingdata/how-to-spot-visualization-lies-flowingdata.pdf
+
+
+barchart
+  base_color = sb.color_palette()[0]
+  sb.countplot(data = pokemon, x = 'generation_id', color = base_color)
+
+piechart
+
+histogram
+  bin_edges = np.arange(0, pokemon['special-defense'].max()+5, 10)
+  plt.hist(data = pokemon, x = 'special-defense', bins = bin_edges)
+
+scale and transformation
+  bin_edges = 10**np.arange(0.1,np.log10(pokemon['weight'].max())+0.1,0.1)
+  plt.hist(data=pokemon, x ='weight',bins=bin_edges)
+  plt.xscale('log')
+  
+Scatterplot
+Transparency
+  plt.scatter(data = fuel_econ,x='city',y='highway',alpha=0.125)
+  plt.xlabel('City Fuel Eff. (mpg)')
+  plt.ylabel('Highway Fuel Eff. (mpg)')
+
+Heat Map
+  binx = np.arange(0.6, fuel_econ['displ'].max()+0.4, 0.4)
+  biny = np.arange(0, fuel_econ['co2'].max()+50, 50)
+  plt.hist2d(data = fuel_econ,x='displ',y='co2',cmin=0.5,bins=(binx,biny),cmap='viridis_r')
+  plt.xlabel('Displacement (l)')
+  plt.ylabel('CO2 (g/mi)')
+  plt.colorbar()
+
+Violin Plot
+  car_categorical = ['Minicompact Cars','Subcompact Cars', 'Compact Cars', 'Midsize Cars', 'Large Cars']
+  vclasses = pd.api.types.CategoricalDtype(ordered = True, categories = car_categorical)
+  fuel_econ['VClass'] = fuel_econ['VClass'].astype(vclasses)
+  base_color = sb.color_palette()[0]
+  sb.violinplot(data=fuel_econ,x='VClass',y='displ',color = base_color)
+  plt.xticks(rotation = 15)
+Box plot
+
+Cluster bar Chart
+  vehicle_classes = ['Minicompact Cars','Subcompact Cars', 'Compact Cars', 'Midsize Cars', 'Large Cars']
+  vehicle = pd.api.types.CategoricalDtype(categories=vehicle_classes, ordered=True)
+  fuel_econ['VClass'] = fuel_econ['VClass'].astype(vehicle)
+  sb.countplot(data= data_test,x = 'VClass',hue='fuelType')
+  plt.xticks(rotation =15)
+  
+  
+Facet
+  g = sb.FacetGrid(data = fuel_econ_sub, col = 'make', col_wrap = 6, size = 2,
+                   col_order = comb_order)
+  # try sb.distplot instead of plt.hist to see the plot in terms of density!
+  g.map(plt.hist, 'comb', bins = np.arange(12, fuel_econ_sub['comb'].max()+2, 2))
+  g.set_titles('{col_name}')
+  
+  
+  base_color = sb.color_palette()[0]
+  sb.barplot(data = fuel_econ_sub, x = 'comb', y = 'make',
+             color = base_color, order = comb_order, ci = 'sd')
+  
+Adaptation of univariate
+
+Line Plot
+
