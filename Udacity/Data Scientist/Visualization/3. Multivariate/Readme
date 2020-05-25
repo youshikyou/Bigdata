@@ -1,1 +1,17 @@
+Further Reading
 
+Matplotlib tutorial: Colormaps in Matplotlib
+Seaborn tutorial: Choosing color palettes
+Eager Eyes: How The Rainbow Color Map Misleads - seaborn will refuse to accept the 'jet' palette string, 
+which corresponds with a rainbow-colored palette that covers the entire range of hues. 
+This, and the next link, will tell you why it's been forbidden.
+Agile Scientific: No more rainbows!
+Datawrapper: How to Choose a Color Palette for Choropleth Maps - 
+Though this article discusses color in the context of maps and for a specific software tool, 
+it's a useful reference if you want to create a non-linear normalization function.
+
+https://matplotlib.org/tutorials/colors/colormaps.html
+https://seaborn.pydata.org/tutorial/color_palettes.html
+https://eagereyes.org/basics/rainbow-color-map
+https://agilescientific.com/blog/2017/12/14/no-more-rainbows
+https://blog.datawrapper.de/how-to-choose-a-color-palette-for-choropleth-maps/
