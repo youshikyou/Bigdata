@@ -4,39 +4,39 @@ https://video.udacity-data.com/topher/2019/November/5dc4a59c_how-to-spot-visuali
 
 barchart
   base_color = sb.color_palette()[0]
-  sb.countplot(data = pokemon, x = 'generation_id', color = base_color)
+  sb.countplot(data = df, x = 'cat_var', color = base_color)
 
 piechart
 
 histogram
-  bin_edges = np.arange(0, pokemon['special-defense'].max()+5, 10)
-  plt.hist(data = pokemon, x = 'special-defense', bins = bin_edges)
+  bin_edges = np.arange(0, df['num_var'].max()+5, 10)
+  plt.hist(data = df, x = 'num_var', bins = bin_edges)
 
 scale and transformation
-  bin_edges = 10**np.arange(0.1,np.log10(pokemon['weight'].max())+0.1,0.1)
-  plt.hist(data=pokemon, x ='weight',bins=bin_edges)
+  bin_edges = 10**np.arange(0.1,np.log10(df['num_var'].max())+0.1,0.1)
+  plt.hist(data=df, x ='num_var',bins=bin_edges)
   plt.xscale('log')
   
 Scatterplot
 Transparency
-  plt.scatter(data = fuel_econ,x='city',y='highway',alpha=0.125)
-  plt.xlabel('City Fuel Eff. (mpg)')
-  plt.ylabel('Highway Fuel Eff. (mpg)')
+  plt.scatter(data = df,x='num_var1',y='num_var2',alpha=0.125)
+  plt.xlabel('xxx')
+  plt.ylabel('yyy')
 
 Heat Map
-  binx = np.arange(0.6, fuel_econ['displ'].max()+0.4, 0.4)
-  biny = np.arange(0, fuel_econ['co2'].max()+50, 50)
-  plt.hist2d(data = fuel_econ,x='displ',y='co2',cmin=0.5,bins=(binx,biny),cmap='viridis_r')
-  plt.xlabel('Displacement (l)')
-  plt.ylabel('CO2 (g/mi)')
+  binx = np.arange(0, df['num_var1'].max()+delta, step)
+  biny = np.arange(0, df['num_var2'].max()+delta, step)
+  plt.hist2d(data = df,x='num_var1',y='num_var2',cmin=0.5,bins=(binx,biny),cmap='viridis_r')
+  plt.xlabel('xxx')
+  plt.ylabel('yyy')
   plt.colorbar()
 
 Violin Plot
   car_categorical = ['Minicompact Cars','Subcompact Cars', 'Compact Cars', 'Midsize Cars', 'Large Cars']
   vclasses = pd.api.types.CategoricalDtype(ordered = True, categories = car_categorical)
-  fuel_econ['VClass'] = fuel_econ['VClass'].astype(vclasses)
+  df['cat_var'] = df['cat_var'].astype(vclasses)
   base_color = sb.color_palette()[0]
-  sb.violinplot(data=fuel_econ,x='VClass',y='displ',color = base_color)
+  sb.violinplot(data=df,x='cat_var',y='num_var',color = base_color)
   plt.xticks(rotation = 15)
 Box plot
 point plot (average point plot)
@@ -44,13 +44,15 @@ point plot (average point plot)
 Cluster bar Chart
   vehicle_classes = ['Minicompact Cars','Subcompact Cars', 'Compact Cars', 'Midsize Cars', 'Large Cars']
   vehicle = pd.api.types.CategoricalDtype(categories=vehicle_classes, ordered=True)
-  fuel_econ['VClass'] = fuel_econ['VClass'].astype(vehicle)
-  sb.countplot(data= data_test,x = 'VClass',hue='fuelType')
+  df['cat_var'] = df['cat_var'].astype(vehicle)
+  sb.countplot(data= df,x = 'cat_var',hue='cat_var1')
+  sb.boxplot(data= df,x = 'cat_var',y = 'num_var',hue='cat_var1')
+  sb.pointplot(data= df,x = 'cat_var',y = 'num_var',hue='cat_var1')
   plt.xticks(rotation =15)
   
   
 Facet
-  g = sb.FacetGrid(data = fuel_econ_sub, col = 'make', col_wrap = 6, size = 2,
+  g = sb.FacetGrid(data = df, col = 'cat_var', col_wrap = 6, size = 2,
                    col_order = comb_order)
   # try sb.distplot instead of plt.hist to see the plot in terms of density!
   g.map(plt.hist, 'comb', bins = np.arange(12, fuel_econ_sub['comb'].max()+2, 2))
@@ -58,7 +60,7 @@ Facet
   
   
   base_color = sb.color_palette()[0]
-  sb.barplot(data = fuel_econ_sub, x = 'comb', y = 'make',
+  sb.barplot(data = df, x = 'comb', y = 'make',
              color = base_color, order = comb_order, ci = 'sd')
   
 Adaptation of univariate
@@ -66,11 +68,11 @@ Adaptation of univariate
 Line Plot
 
 Matrix Plot
-  g= sb.PairGrid(data=fuel_econ,vars=['displ', 'co2', 'city', 'highway','comb'])
+  g= sb.PairGrid(data=df,vars=['displ', 'co2', 'city', 'highway','comb'])
   g.map_offdiag(plt.scatter)
   g.map_diag(plt.hist)
   
-  g = sb.FacetGrid(data = fuel_econ_sub, col = 'fuelType', size = 4,col_wrap = 3)
+  g = sb.FacetGrid(data = df, col = 'fuelType', size = 4,col_wrap = 3)
   g.map(sb.regplot, 'co2_gal', 'displ', y_jitter = 0.04, fit_reg = False,scatter_kws = {'alpha' : 1/5})
   g.set_ylabels('Engine displacement (l)')
   g.set_xlabels('CO2 (g/gal)')
