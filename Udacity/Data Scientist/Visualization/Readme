@@ -64,3 +64,13 @@ Adaptation of univariate
 
 Line Plot
 
+Matrix Plot
+  g= sb.PairGrid(data=fuel_econ,vars=['displ', 'co2', 'city', 'highway','comb'])
+  g.map_offdiag(plt.scatter)
+  g.map_diag(plt.hist)
+  
+  g = sb.FacetGrid(data = fuel_econ_sub, col = 'fuelType', size = 4,col_wrap = 3)
+  g.map(sb.regplot, 'co2_gal', 'displ', y_jitter = 0.04, fit_reg = False,scatter_kws = {'alpha' : 1/5})
+  g.set_ylabels('Engine displacement (l)')
+  g.set_xlabels('CO2 (g/gal)')
+  g.set_titles('{col_name}')
