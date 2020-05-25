@@ -39,6 +39,7 @@ Violin Plot
   sb.violinplot(data=fuel_econ,x='VClass',y='displ',color = base_color)
   plt.xticks(rotation = 15)
 Box plot
+point plot (average point plot)
 
 Cluster bar Chart
   vehicle_classes = ['Minicompact Cars','Subcompact Cars', 'Compact Cars', 'Midsize Cars', 'Large Cars']
