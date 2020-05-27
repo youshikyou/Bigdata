@@ -1,1 +1,13 @@
+Feature Extraction
 
+Scalers
+  Normalizer: https://spark.apache.org/docs/latest/ml-features.html#normalizer
+  StandardScaler:https://spark.apache.org/docs/latest/ml-features.html#standardscaler
+  MinMaxScaler:https://spark.apache.org/docs/latest/ml-features.html#minmaxscaler
+  MaxAbsScale:https://spark.apache.org/docs/latest/ml-features.html#maxabsscaler
+
+
+Indexers
+  StringIndexer:https://spark.apache.org/docs/latest/ml-features.html#stringindexer
+  IndexToString:https://spark.apache.org/docs/latest/ml-features.html#indextostring
+  VectorIndexer:https://spark.apache.org/docs/latest/ml-features.html#vectorindexer
