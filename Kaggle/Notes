@@ -9,7 +9,8 @@ https://towardsdatascience.com/hyperparameter-tuning-the-random-forest-in-python
 Two methods to fill null value with mean value
 
   from sklearn.impute import SimpleImputer
-  imputed_X_train = pd.DataFrame(SimpleImputer.fit_transform(X_train))
+  my_imputer = SimpleImputer()
+  imputed_X_train = pd.DataFrame(my_imputer.fit_transform(X_train))
   # Fill in the lines below: imputation removed column names; put them back
   imputed_X_train.columns = X_train.columns
   
