@@ -1,6 +1,0 @@
-DecisionTreeRegressor
-RandomForestRegressor
-train_test_split
-
-RandomizedSearchCV/GridSearchCV are used to find the best hyperparameter combination. 
-https://towardsdatascience.com/hyperparameter-tuning-the-random-forest-in-python-using-scikit-learn-28d2aa77dd74

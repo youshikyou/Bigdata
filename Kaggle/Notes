@@ -1,0 +1,17 @@
+DecisionTreeRegressor
+RandomForestRegressor
+train_test_split
+
+RandomizedSearchCV/GridSearchCV are used to find the best hyperparameter combination. 
+https://towardsdatascience.com/hyperparameter-tuning-the-random-forest-in-python-using-scikit-learn-28d2aa77dd74
+
+========================================================================================================
+Two methods to fill null value with mean value
+
+  from sklearn.impute import SimpleImputer
+  imputed_X_train = pd.DataFrame(SimpleImputer.fit_transform(X_train))
+  # Fill in the lines below: imputation removed column names; put them back
+  imputed_X_train.columns = X_train.columns
+  
+  import pandas as pd
+  imputed_X_train = X_train.fillna(value = X_train.mean())
