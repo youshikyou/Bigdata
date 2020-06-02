@@ -48,6 +48,13 @@ pandas.DataFrame.select_dtypes
 DataFrame.select_dtypes(self, include=None, exclude=None)
 Return a subset of the DataFrame’s columns based on the column dtypes.
 
+# Apply one-hot encoder to each column with categorical data
+OH_encoder = OneHotEncoder(handle_unknown='ignore', sparse=False)
+OH_cols_train = pd.DataFrame(OH_encoder.fit_transform(X_train[low_cardinality_cols]))
+OH_cols_valid = pd.DataFrame(OH_encoder.transform(X_valid[low_cardinality_cols]))
+
+# One-hot encoding removed index; put it back
+OH_cols_train.index = X_train.index
 
 
 
