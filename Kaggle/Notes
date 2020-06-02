@@ -39,7 +39,13 @@ For tree-based models (like decision trees and random forests), you can expect l
 One-hot encoding generally does not perform well if the categorical variable takes on a large number of values 
 (i.e., you generally won't use it for variables taking more than 15 different values).
 
-pandas.get_dummies
+pandas.get_dummies, 
+pd.get_dummies(X_train[low_cardinality_cols])  # new column name will have the categories which are in each column.
+for example col is Street and this column has two unique categories: Grv1,Pave.
+The dummied result in column name is like 'Street_Grvl', 'Street_Pave'
+
+
+
 sklearn.preprocessing.OneHotEncoder, for non-ordinal feature 
 sklearn.preprocessing.LabelEncoder, LabelEncoder only transforms the categorical data to numerical one
 keras.utils.to_categorical, transform the lable into one-hot encoding.
