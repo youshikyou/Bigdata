@@ -36,7 +36,8 @@ Two methods to fill null value with mean value
 =======================================================================
 Categorical Variable
 For tree-based models (like decision trees and random forests), you can expect label encoding to work well with ordinal variables.
-
+One-hot encoding generally does not perform well if the categorical variable takes on a large number of values 
+(i.e., you generally won't use it for variables taking more than 15 different values).
 
 
 
