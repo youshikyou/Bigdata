@@ -33,3 +33,10 @@ Two methods to fill null value with mean value
   
   import pandas as pd
   imputed_X_train = X_train.fillna(value = X_train.mean())
+=======================================================================
+Categorical Variable
+For tree-based models (like decision trees and random forests), you can expect label encoding to work well with ordinal variables.
+
+
+
+
