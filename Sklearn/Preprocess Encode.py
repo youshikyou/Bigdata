@@ -22,10 +22,14 @@ OH_cols_train.index = X_train.index
 OH_cols_valid.index = X_valid.index
 
 =======================================================================================
-You should calculate the encodings from the training set only. If you include data from the validation and test sets into the encodings,
-you'll overestimate the model's performance. You should in general be vigilant to avoid leakage, that is, 
-including any information from the validation and test sets into the model.                                                            
-
+#Count Encoding
+#Count encoding replaces each categorical value with the number of times it appears in the dataset.
+#For example, if the value "GB" occured 10 times in the country feature, then each "GB" would be replaced with the number 10.
+#We'll use the categorical-encodings package to get this encoding. The encoder itself is available as CountEncoder. 
+#This encoder and the others in categorical-encodings work like scikit-learn transformers with .fit and .transform methods
+#You should calculate the encodings from the training set only. If you include data from the validation and test sets into the encodings,
+#you'll overestimate the model's performance. You should in general be vigilant to avoid leakage, that is, 
+#including any information from the validation and test sets into the model.                                                                                                           
 features = ['col1', 'col2']
 train, valid, test = get_data_splits(clicks)
                                                             
@@ -43,11 +47,6 @@ valid_encoded = count_enc.transform(valid[features]).add_suffix("_count")
 train_encoded = train.join(train_encoded)
 valid_encoded = valid.join(valid_encoded)                                                                                                          
                                                             
-#Count Encoding
-#Count encoding replaces each categorical value with the number of times it appears in the dataset. 
-#For example, if the value "GB" occured 10 times in the country feature, then each "GB" would be replaced with the number 10.
-#We'll use the categorical-encodings package to get this encoding. The encoder itself is available as CountEncoder. 
-#This encoder and the others in categorical-encodings work like scikit-learn transformers with .fit and .transform methods
 import category_encoders as ce
 count_enc = ce.CountEncoder()
 count_encoded = count_enc.fit_transform(df[features])
@@ -87,7 +86,7 @@ valid_encoded = valid.join(target_enc.transform(valid[features]).add_suffix('_ta
 
 ====================================================================================
 #CatBoost Encoding
-#Finally, we'll look at CatBoost encoding. 
+#The CatBoost encoder is supposed to working well with the LightGBM model.
 #This is similar to target encoding in that it's based on the target probablity for a given value. 
 #However with CatBoost, for each row, the target probability is calculated only from the rows before it. 
 
