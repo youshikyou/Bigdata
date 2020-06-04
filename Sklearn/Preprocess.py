@@ -28,3 +28,8 @@ OH_cols_valid.index = X_valid.index
 #We'll use the categorical-encodings package to get this encoding. The encoder itself is available as CountEncoder. 
 #This encoder and the others in categorical-encodings work like scikit-learn transformers with .fit and .transform methods
 import category_encoders as ce
+count_enc = ce.CountEncoder()
+count_encoded = count_enc.fit_transform(df[features])
+data = baseline_data.join(count_encoded.add_suffix("_count"))
+
+                                                            
