@@ -53,12 +53,6 @@ count_enc = ce.CountEncoder()
 count_encoded = count_enc.fit_transform(df[features])
 data = baseline_data.join(count_encoded.add_suffix("_count"))
                                                             
-                                                            
-                                                            
-                                                            
-                                                            
-
-
 ====================================================================================
 #Target encoding replaces a categorical value with the average value of the target for that value of the feature. 
 #For example, given the country value "CA", you'd calculate the average outcome for all the rows with country == 'CA', around 0.28. 
@@ -74,7 +68,22 @@ import category_encoders as ce
 target_enc = ce.TargetEncoder(cols=features)
 # Fit the encoder using the categorical features and target
 target_enc.fit(train[features], train['target'])
-train = train.join(target_enc.transform(train[features]).add_suffix('_target'))            
+train = train.join(target_enc.transform(train[features]).add_suffix('_target'))
+                                                            
+                                                            
+                                                            
+features = ['col1', 'col2']
+# Create the target encoder. You can find this easily by using tab completion.
+# Start typing ce. the press Tab to bring up a list of classes and functions.
+target_enc = ce.TargetEncoder(cols=features)
+
+# Learn encoding from the training set. Use the label column as the target.
+target_enc.fit(train[features],train['label'])
+
+# Apply encoding to the train and validation sets as new columns
+# Make sure to add `_target` as a suffix to the new columns
+train_encoded = train.join(target_enc.transform(train[features]).add_suffix('_target'))
+valid_encoded = valid.join(target_enc.transform(valid[features]).add_suffix('_target'))
 
 ====================================================================================
 #CatBoost Encoding
