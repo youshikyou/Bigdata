@@ -1,0 +1,8 @@
+import lightgbm as lgb
+
+dtrain = lgb.Dataset(train[feature_cols], label=train['outcome'])
+dvalid = lgb.Dataset(valid[feature_cols], label=valid['outcome'])
+param = {'num_leaves': 64, 'objective': 'binary','metric': 'auc', 'seed': 7}         
+bst = lgb.train(param, dtrain, num_boost_round=1000, valid_sets=[dvalid], 
+                early_stopping_rounds=10, verbose_eval=False)
+valid_pred = bst.predict(valid[feature_cols])
