@@ -22,6 +22,27 @@ OH_cols_train.index = X_train.index
 OH_cols_valid.index = X_valid.index
 
 =======================================================================================
+You should calculate the encodings from the training set only. If you include data from the validation and test sets into the encodings,
+you'll overestimate the model's performance. You should in general be vigilant to avoid leakage, that is, 
+including any information from the validation and test sets into the model.                                                            
+
+features = ['col1', 'col2']
+train, valid, test = get_data_splits(clicks)
+                                                            
+# Create the count encoder
+count_enc = ce.CountEncoder(cols=features)
+
+# Learn encoding from the training set!!!!
+count_enc.fit(train[features])
+
+# Apply encoding to the train and validation sets as new columns
+# Make sure to add `_count` as a suffix to the new columns
+train_encoded = count_enc.transform(train[features]).add_suffix("_count")
+valid_encoded = count_enc.transform(valid[features]).add_suffix("_count")
+
+train_encoded = train.join(train_encoded)
+valid_encoded = valid.join(valid_encoded)                                                                                                          
+                                                            
 #Count Encoding
 #Count encoding replaces each categorical value with the number of times it appears in the dataset. 
 #For example, if the value "GB" occured 10 times in the country feature, then each "GB" would be replaced with the number 10.
@@ -31,6 +52,12 @@ import category_encoders as ce
 count_enc = ce.CountEncoder()
 count_encoded = count_enc.fit_transform(df[features])
 data = baseline_data.join(count_encoded.add_suffix("_count"))
+                                                            
+                                                            
+                                                            
+                                                            
+                                                            
+
 
 ====================================================================================
 #Target encoding replaces a categorical value with the average value of the target for that value of the feature. 
