@@ -616,9 +616,6 @@ We can use the .corr() method to get the correlation between different columns, 
 Google_stock.corr()
 
 
-# In[ ]:
-
-
 """
 The .groupby() method allows us to group data in different ways. Let's see how we can group data to get different types of information. 
 For the next examples we are going to load fake data about a fictitious company.
@@ -656,14 +653,6 @@ Let's see the result
 """
 # We display the salary distribution per department per year.
 data.groupby(['Year', 'Department'])['Salary'].sum()
-
-
-# Read timestamp convert into int
-# Add new columns for timestamp features day, hour, minute, and second
-clicks = click_data.copy()
-clicks['day'] = clicks['click_time'].dt.day.astype('uint8')
-clicks['hour'] = clicks['click_time'].dt.hour.astype('uint8')
-
 
 
 
