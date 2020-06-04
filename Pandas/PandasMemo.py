@@ -648,6 +648,7 @@ data.groupby(['Year'])['Salary'].mean()
 # We display the total salary each employee received in all the years they worked for the company
 data.groupby(['Name'])['Salary'].sum()
 
+
 """
 Now let's see what was the salary distribution per department per year. In this case we will group 
 the data by Year and by Department using the .groupby() method and then we will add up the salaries for each department. 
@@ -657,7 +658,12 @@ Let's see the result
 data.groupby(['Year', 'Department'])['Salary'].sum()
 
 
-# In[ ]:
+# Read timestamp convert into int
+# Add new columns for timestamp features day, hour, minute, and second
+clicks = click_data.copy()
+clicks['day'] = clicks['click_time'].dt.day.astype('uint8')
+clicks['hour'] = clicks['click_time'].dt.hour.astype('uint8')
+
 
 
 
