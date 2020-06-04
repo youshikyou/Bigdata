@@ -1,6 +1,5 @@
 DecisionTreeRegressor
 RandomForestRegressor
-train_test_split
 
 RandomizedSearchCV/GridSearchCV are used to find the best hyperparameter combination. 
 https://towardsdatascience.com/hyperparameter-tuning-the-random-forest-in-python-using-scikit-learn-28d2aa77dd74
@@ -39,11 +38,6 @@ For tree-based models (like decision trees and random forests), you can expect l
 One-hot encoding generally does not perform well if the categorical variable takes on a large number of values 
 (i.e., you generally won't use it for variables taking more than 15 different values).
 
-pandas.get_dummies, 
-pd.get_dummies(X_train[low_cardinality_cols])  # new column name will have the categories which are in each column.
-for example col is Street and this column has two unique categories: Grv1,Pave.
-The dummied result in column name is like 'Street_Grvl', 'Street_Pave'
-
 
 
 sklearn.preprocessing.OneHotEncoder, for non-ordinal feature 
@@ -53,14 +47,6 @@ keras.utils.to_categorical, transform the lable into one-hot encoding.
 pandas.DataFrame.select_dtypes
 DataFrame.select_dtypes(self, include=None, exclude=None)
 Return a subset of the DataFrame’s columns based on the column dtypes.
-
-# Apply one-hot encoder to each column with categorical data
-OH_encoder = OneHotEncoder(handle_unknown='ignore', sparse=False)
-OH_cols_train = pd.DataFrame(OH_encoder.fit_transform(X_train[low_cardinality_cols]))
-OH_cols_valid = pd.DataFrame(OH_encoder.transform(X_valid[low_cardinality_cols]))
-
-# One-hot encoding removed index; put it back
-OH_cols_train.index = X_train.index
 
 
 
