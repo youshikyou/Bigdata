@@ -11,3 +11,6 @@ We begin by creating a DataFrame containing columns with latitude and longitude 
 To convert it to a GeoDataFrame, we use gpd.GeoDataFrame().
 The gpd.points_from_xy() function creates Point objects from the latitude and longitude columns.
 """
+data_df = pd.read_csv(filepath)
+data_geo = gpd.GeoDataFrame(data_df, geometry=gpd.points_from_xy(data_df['longitude'],data_df['lattitude']))
+data_geo.crs = {'init': 'epsg:xxxx'}  
