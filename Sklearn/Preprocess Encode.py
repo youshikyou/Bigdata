@@ -1,3 +1,14 @@
+"""
+Categorical Variable
+For tree-based models (like decision trees and random forests), you can expect label encoding to work well with ordinal variables.
+One-hot encoding generally does not perform well if the categorical variable takes on a large number of values 
+(i.e., you generally won't use it for variables taking more than 15 different values).
+sklearn.preprocessing.OneHotEncoder, for non-ordinal feature 
+sklearn.preprocessing.LabelEncoder, LabelEncoder only transforms the categorical data to numerical one
+keras.utils.to_categorical, transform the lable into one-hot encoding.
+"""
+
+=========================================================================================
 from sklearn.preprocessing import LabelEncoder
 
 # Method1
