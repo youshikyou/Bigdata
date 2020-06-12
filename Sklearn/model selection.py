@@ -12,3 +12,8 @@ def get_data_splits(dataframe, valid_fraction=0.1):
     # valid size == test size, last two sections of the data
     valid = dataframe[-valid_size * 2:-valid_size]
     test = dataframe[-valid_size:]
+
+    
+=================================================================
+#RandomizedSearchCV/GridSearchCV are used to find the best hyperparameter combination. 
+#https://towardsdatascience.com/hyperparameter-tuning-the-random-forest-in-python-using-scikit-learn-28d2aa77dd74
