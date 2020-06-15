@@ -1,6 +1,13 @@
 seaborn.barplot
 seaborn.scatterplot
 seaborn.heatmap
-seaborn.regplot
-seaborn.lmplot
-seaborn.swarmplot (categorical with continuous variable)
+seaborn.regplot 
+seaborn.lmplot  #multiple regression plot
+seaborn.swarmplot  # (categorical with continuous variable)
+seaborn.distplot   # histogram
+seaborn.kdeplot    # density plot
+seaborn.jointplot  # 2D KDE plot
+
+#Color-coded plots
+seaborn.distplot(a=data1, label="label1", kde=False)
+seaborn.distplot(a=data2, label="label2", kde=False)
