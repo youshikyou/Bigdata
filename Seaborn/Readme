@@ -1,1 +1,6 @@
-
+seaborn.barplot
+seaborn.scatterplot
+seaborn.heatmap
+seaborn.regplot
+seaborn.lmplot
+seaborn.swarmplot (categorical with continuous variable)
