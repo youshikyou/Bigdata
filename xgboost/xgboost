@@ -1,0 +1,4 @@
+from xgboost import XGBClassifier
+
+model = XGBClassifier()
+model.fit(train_x,train_y)
