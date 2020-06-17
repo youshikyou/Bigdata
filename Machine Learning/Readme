@@ -1,1 +1,8 @@
+If the relationship between dependent & independent variable is well approximated by a linear model, 
+linear regression will outperform tree based model.
 
+If there is a high non-linearity & complex relationship between dependent & independent variables, 
+a tree model will outperform a classical regression method.
+
+If you need to build a model which is easy to explain to people, a decision tree model will always 
+do better than a linear model. Decision tree models are even simpler to interpret than linear regression!
