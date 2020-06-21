@@ -1,3 +1,9 @@
+#kNN regression
+
+from sklearn.neighbors import KNeighborsRegressor
+KNeighborsRegressor(n_neighbors=k)
+
+
 #decision tree
   from sklearn.tree import DecisionTreeClassifier
   model = DecisionTreeClassifier()
