@@ -10,3 +10,6 @@ do better than a linear model. Decision tree models are even simpler to interpre
 
 Sensitivity = recall are to try to capture all the positive feature, false negative is not acceptable.
 tp/(tp+fn), false negative is less, the more you categorize it into positive. When positive feature is more important, higher sensitivity(recall). 
+specificity tn/(tn+fn)
+precision tp/(tp+fp)
+accuracy tp/(tp+tn)
