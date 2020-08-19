@@ -8,5 +8,5 @@ If you need to build a model which is easy to explain to people, a decision tree
 do better than a linear model. Decision tree models are even simpler to interpret than linear regression!
 
 
-Sensitivity = recall are to try to capture all the positive feature.
+Sensitivity = recall are to try to capture all the positive feature, false negative is not acceptable.
 tp/(tp+fn), false negative is less, the more you categorize it into positive. When positive feature is more important, higher sensitivity(recall). 
