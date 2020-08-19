@@ -12,4 +12,4 @@ Sensitivity = recall are to try to capture all the positive feature, false negat
 tp/(tp+fn), false negative is less, the more you categorize it into positive. When positive feature is more important, higher sensitivity(recall). 
 specificity tn/(tn+fn)
 precision tp/(tp+fp)
-accuracy tp/(tp+tn)
+accuracy tp+tn/(tp+fp+tn+fn)
