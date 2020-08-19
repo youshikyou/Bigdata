@@ -6,3 +6,7 @@ a tree model will outperform a classical regression method.
 
 If you need to build a model which is easy to explain to people, a decision tree model will always 
 do better than a linear model. Decision tree models are even simpler to interpret than linear regression!
+
+
+Sensitivity = recall are to try to capture all the positive feature.
+tp/(tp+fn), false negative is less, the more you categorize it into positive. When positive feature is more important, higher sensitivity(recall). 
